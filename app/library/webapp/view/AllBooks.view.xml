@@ -1,0 +1,222 @@
+<mvc:View controllerName="com.app.library.controller.AllBooks"
+
+    xmlns:layout="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns:ui5="sap.ui.webc.main"
+    xmlns:f="sap.f"
+    height="100%"
+>
+
+    <f:DynamicPage
+        id="idAllBooks"
+        headerExpanded="true"
+    >
+        <f:title>
+            <f:DynamicPageTitle id="idpage">
+                <f:heading>
+                    <Title
+                        id="idte"
+                        text="Total Books in Library"
+                    />   
+                </f:heading>
+                 
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:header>
+            <f:DynamicPageHeader
+                id="idDynamicPageHeader1"
+                pinnable="true"
+            >
+                <HBox
+                    id="idFilterHLayout1"
+                    alignContent="SpaceAround"
+                    width="100vw"
+                >
+                    <VBox
+                        id="idISBNFilter1"
+                        class="sapUiSmallMarginEnd"
+                    >
+                        <Label
+                            id="idISBNFilterLabel1"
+                            text="ISBN:"
+                        />
+                        <MultiInput
+                            id="idISBNFilterValue"
+                            value=""
+                        />
+                    </VBox>
+
+                    <VBox class="sapUiSmallMarginEnd">
+                        <Label
+                            id="idAuthorFilterLabel1"
+                            text="Author:"
+                        />
+                        <MultiInput
+                            id="idAuthorFilterValue"
+                            value=""
+                        />
+                    </VBox>
+
+                    <VBox class="sapUititlefilter1">
+                        <Label
+                            id="idtitleFilterLabel1"
+                            text="Title:"
+                        />
+                        <MultiInput
+                            id="idtitleFilterValue"
+                            value=""
+                        />
+                    </VBox>
+                    <VBox class="sapGenfilter">
+                        <Label
+                            id="idGenFilterLabel1"
+                            text="Genre:"
+                        />
+                        <MultiInput
+                            id="idGenreFilterValue"
+                            value=""
+                        />
+                    </VBox>
+                    <VBox
+                        id="idGoButton"
+                        class="sapUiSmallMarginEnd1"
+                    >
+                        <Label
+                            id="idGoButtonLabel1"
+                            text=""
+                        />
+                        <Button
+                            text="Go"
+                            type="Emphasized"
+                            press="onGoPress"
+                        />
+                    </VBox>
+                
+                    <VBox
+                        id="idClearFilterButton1"
+                        class="sapUiSmallMarginEnd"
+                    >
+                        <Label
+                            id="idClearFilterButtonLabel1"
+                            text=""
+                        />
+                        <Button
+                            id="idClearFilterButtonValue"
+                            text="Clear"
+                            type="Emphasized"
+                            press="onClearFilterPress"
+                        />
+                    </VBox>
+
+                   
+                </HBox>
+            </f:DynamicPageHeader>
+        </f:header>
+        <f:content>
+            <Table
+                id="idAllBooksTable"
+                mode="MultiSelect"
+                alternateRowColors="true"
+                items="{ path:'/Book',  parameters : {
+            $count : true
+        }}"
+                selectionChange="onSelectBook"
+            >
+                <headerToolbar>
+                    <OverflowToolbar id="idBookTableHeader1">
+                        <Title
+                            id="idTableHeaderTitle1"
+                            text="Total Books:{/Book/$count}"
+                        />
+                        <ToolbarSpacer id="idTableHeaderSpacer1" />
+                         <Button
+                icon="sap-icon://course-book"
+                id="idbtn1"
+                text="Reserve Book"
+                type="Emphasized"
+                width="10%"
+                press="onReserve"
+            />
+                
+                    </OverflowToolbar>
+                </headerToolbar>
+                <columns>
+                    <Column id="idNameCol1">
+                        <Title
+                            id="idTextColTitle"
+                            text="ISBN"
+                        />
+                    </Column>
+                    <Column id="idtitleCol1">
+                        <Title
+                            id="idTitle"
+                            text="Title"
+                        />
+                    </Column>
+                    <Column id="idAuthorCol1">
+                        <Title
+                            id="idAuthor"
+                            text="Author"
+                        />
+                    </Column>
+                    <Column id="idGenCol1">
+                        <Title
+                            id="idgenColTitle1"
+                            text="Genre"
+                        />
+                    </Column>
+                    <Column id="idnobooksCol1">
+                        <Title
+                            id="idsta"
+                            text="No.of_Books"
+                        />
+                    </Column>
+                    <Column id="idDesCol1">
+                        <Title
+                            id="idDes"
+                            text="Description"
+                        />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem
+                        id="idEmployeeTableColListItem1"
+                        type="Navigation"
+                    >
+                        <cells>
+                            <Text
+                                id="idNameColValue1"
+                                text="{ISBN}"
+                            />
+                            <Text
+                                id="idGenderColValue1"
+                                text="{Title}"
+                            />
+                            <Text
+                                id="idDOBColValue1"
+                                text="{Author}"
+                            />
+                            <Text
+                                id="idEmailColValue1"
+                                text="{Genre}"
+                            />
+                            <Text
+                                id="idNofbooksColValue1"
+                                text="{No_of_books}"
+                            />
+                            <Text
+                                id="idPhoneColValue1"
+                                text="{Description}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+        </f:content>
+    </f:DynamicPage>
+
+</mvc:View>

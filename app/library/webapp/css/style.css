@@ -1,0 +1,16 @@
+.page {
+    background-image: url("https://th.bing.com/th/id/R.5050de1895cb1faf51ba6fd0c2fc7843?rik=2r2e8WAtdY1EMg&riu=http%3a%2f%2fmedia-cdn.tripadvisor.com%2fmedia%2fphoto-s%2f01%2f7d%2f71%2f33%2fny-public-library-reading.jpg&ehk=GLCurlFUG0wBi4CyQlocXBuHJEAlGGryiWkvwurw4OQ%3d&risl=&pid=ImgRaw&r=0");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
+.admin_view{
+   background-color: lightsalmon; 
+}
+admin_heading{
+    background-color: lightsalmon;
+}
+issueLoan_view{
+    background-color: lightsalmon;
+}

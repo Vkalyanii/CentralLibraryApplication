@@ -1,0 +1,97 @@
+<mvc:View
+    xmlns:tnt="sap.tnt"
+    controllerName="com.app.library.controller.AllUsers"
+   
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Table
+        id="idUserLoans"
+         items ="{/User}"
+        alternateRowColors="true"
+        backgroundDesign="Transparent"
+   mode="SingleSelectMaster"
+         selectionChange="onSelectParticularUser"
+    >
+     
+     <!-- Header Tool Bar-->
+        <headerToolbar>
+            <OverflowToolbar id="idOverflowToolbar">
+                <Title
+                    id="idAllUsersTitle"
+                    text="All Users in the Library"
+                />
+                <ToolbarSpacer id="idtoolbar" />
+ 
+                <!-- <Button
+                    icon="sap-icon://learning-assistant"
+                    id="idbutton"
+                    type="Accept"
+                    text="Issue Book"
+                />
+                -->
+            </OverflowToolbar>
+        </headerToolbar>
+ 
+        <columns> 
+        <Column id="idusernameColumn">
+                <Title
+                    id="idusernametitle"
+                    text="username"
+                />
+            </Column>
+
+            <Column id="iduserTypeColumn">
+                <Title
+                    id="iduserTypetitle"
+                    text="userType"
+                />
+            </Column>
+            <Column id="idemailColumn">
+                <Title
+                    id="idemail"
+                    text="email"
+                />
+            </Column>
+
+            
+            <Column id="idPhoneColumn">
+                <Title
+                    id="idPhonetitle"
+                    text="Phone"
+                />
+            </Column>
+
+        </columns>
+ 
+        <items>
+            <ColumnListItem id="idColumnLalluserBooksLoan"
+        type="Navigation">
+                 <cells>
+                    <Text
+                        id="idBISBNvalue"
+                        text="{username}"
+                    />
+                    <Text
+                        id="idBookTitlevalue"
+                        text="{userType}"
+                    />
+                    <Text
+                        id="idBUservalue"
+                        text="{email}"
+                    />
+                   
+                    <Text
+                        id="idIssuevalue"
+                        text="{Phone}"
+                    />
+                    <!-- <Text
+                        id="idduevalue"
+                        text="{dueDate}"
+                    /> -->
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</mvc:View>

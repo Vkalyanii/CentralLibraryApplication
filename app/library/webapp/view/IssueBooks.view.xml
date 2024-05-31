@@ -1,0 +1,100 @@
+<mvc:View
+    xmlns:tnt="sap.tnt"
+    controllerName="com.app.library.controller.IssueBooks"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <!-- <List id="idUserLoans" items="{path:'/BooksLoan'}">
+    <StandardListItem  id="ss" title="{users}" counter="{users}"></StandardListItem>
+    </List> -->
+    <Table
+        id="idUserLoans"
+        items="{/Bookloan}"
+        class="issueLoan_view"
+        alternateRowColors="true"
+        backgroundDesign="Transparent"
+        mode="MultiSelect"
+        selectionChange="onSelectionChange"
+    >
+     
+     <!-- Header Tool Bar-->
+        <headerToolbar>
+            <OverflowToolbar id="idOverflowToolbar">
+                <Title
+                    id="idUserLoanTitle"
+                    text="Issue Books"
+                />
+                <ToolbarSpacer id="idtoolbar" />
+ 
+                <Button
+                    icon="sap-icon://learning-assistant"
+                    id="idbutton"
+                    type="Accept"
+                    text="Issue Book"
+                    press="onIssueBookPress"
+                />
+               
+            </OverflowToolbar>
+        </headerToolbar>
+ 
+        <columns> 
+            <Column id="idISBNColumn">
+                <Title
+                    id="idISBNtitle"
+                    text="ISBN"
+                />
+            </Column>
+
+            <Column id="idUserIdColumn">
+                <Title
+                    id="idUserIdtitle"
+                    text="UserId"
+                />
+            </Column>
+            <Column id="idTitleColumn">
+                <Title
+                    id="idTitle"
+                    text="Title"
+                />
+            </Column>
+
+            
+            <Column id="idReservationColumn">
+                <Title
+                    id="idReservationtitle"
+                    text="Reservation_id"
+                />
+            </Column>
+
+        </columns>
+ 
+        <items>
+            <ColumnListItem id="idColumnListBooksLoan" type="Active">
+                <cells>
+                    <Text
+                        id="idBISBNvalue"
+                        text="{book_ISBN}"
+                    />
+                    <Text
+                        id="idBookTitlevalue"
+                        text="{user_ID_ID}"
+                    />
+                    <Text
+                        id="idBUservalue"
+                        text="{Title}"
+                    />
+                   
+                    <Text
+                        id="idIssuevalue"
+                        text="{ID}"
+                    />
+                    <!-- <Text
+                        id="idduevalue"
+                        text="{dueDate}"
+                    /> -->
+                </cells>
+            </ColumnListItem>
+        </items>
+    </Table>
+</mvc:View>
