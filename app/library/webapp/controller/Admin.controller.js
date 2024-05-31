@@ -231,7 +231,8 @@ sap.ui.define(
         var oSelected = this.byId("idBookTable").getSelectedItem();
 
         if (oSelected) {
-          var oID = oSelected.getBindingContext().getProperty("ISBN");
+          var oID = oSelected.getBindingContext().getProperty("ID");
+          var oISBN = oSelected.getBindingContext().getProperty("ISBN");
           var oAuthorname = oSelected.getBindingContext().getProperty("Author");
           var otitle = oSelected.getBindingContext().getProperty("Title");
           var oGenree = oSelected.getBindingContext().getProperty("Genre");
@@ -240,7 +241,8 @@ sap.ui.define(
 
 
           var newBookModel = new sap.ui.model.json.JSONModel({
-            ISBN: oID,
+            ID:oID,
+            ISBN: oISBN,
             Author: oAuthorname,
             Title: otitle,
             Genre: oGenree,
@@ -266,7 +268,7 @@ sap.ui.define(
 
         try {
           // Assuming your update method is provided by your OData V2 model
-          oDataModel.update("/Book(' " + oPayload.ISBN  + " ')", oPayload, {
+          oDataModel.update("/Book(" + oPayload.ID  + ")", oPayload, {
             success: function () {
               this.getView().byId("idBookTable").getBinding("items").refresh();
               this.oEditBooksDialog.close();

@@ -8,14 +8,14 @@ using {cuid} from '@sap/cds/common';
 //     phone:[phone]
 // }
 
-entity Book {
-    key ISBN        : String;
+entity Book :cuid{
+        ISBN        : String;
         Title       : String;
         Author      : String;
         Genre       : String;
         No_of_books : String;
         Description : String;
-        user        : Association to User ;
+        user        : Association to User on user.book = $self;
         bookLoan1    : Association to  BookLoan on bookLoan1.book = $self;
         Reservation : Association to Reservation;
 }
