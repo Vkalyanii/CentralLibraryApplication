@@ -81,7 +81,7 @@
                     />
                     <m:Link
                         id="idLink1"
-                        text="{phone}"
+                        text="{Phone}"
                     />
                     <m:Link
                         id="idLink2"

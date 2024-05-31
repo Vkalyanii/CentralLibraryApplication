@@ -38,7 +38,7 @@
 </snappedHeading>
  
         <expandedContent>
-<m:Text id="idWelcomeTag1" text="{/User/username} Dashboard " />
+<m:Text id="idWelcomeTag1" text="{username} Dashboard " />
 </expandedContent>
 
 </ObjectPageDynamicHeaderTitle>
@@ -57,7 +57,24 @@
                     src=""
                     displaySize="L"
                 />
- 
+               <m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<m:Title text="Contact Information" class="sapUiTinyMarginBottom" />
+
+					<m:HBox class="sapUiTinyMarginBottom">
+						<core:Icon src="sap-icon://account"/>
+						<m:Link text=" John Miller" class="sapUiSmallMarginBegin"/>
+					</m:HBox>
+
+					<m:HBox class="sapUiTinyMarginBottom">
+						<core:Icon src="sap-icon://outgoing-call"/>
+						<m:Link text="+1234 5678" class="sapUiSmallMarginBegin"/>
+					</m:HBox>
+
+					<m:HBox>
+						<core:Icon src="sap-icon://email"/>
+						<m:Link text="john.miller@company.com" class="sapUiSmallMarginBegin"/>
+					</m:HBox>
+				</m:VBox>
                 <layout:VerticalLayout
                     id="idVerticalLayout1"
                     class="sapUiSmallMarginBeginEnd"
@@ -68,17 +85,17 @@
                     />
                      <m:Text
                         id="idTextUserid"
-                        text="{user_id}"
+                        text="{ID}"
                     />
                     <m:Link
                         id="idLink1"
-                        text="{Phone}"
+                        text=""
                     />
                     <m:Link
                         id="idLink2"
-                        text="{email}"
+                        text=""
                     />
-    
+            
                 </layout:VerticalLayout>
                 <layout:HorizontalLayout
                     id="idHorizontalLayout"
@@ -101,7 +118,7 @@
                 >
                     <m:Label
                         id="idLabelForUserText"
-                        text="Hello{username} from Central Library"
+                        text="Hello {username} from Central Library"
                     />
                 </layout:VerticalLayout>
  
@@ -199,7 +216,7 @@
                                         <m:cells>
                                             <m:Text
                                                 id="idBookNameColValueUserLoans1"
-                                                text="{book_ISBN}"
+                                                text="{book/ISBN}"
                                             />
                                             <m:Text
                                                 id="idAuthorColValueUserLoans1"
