@@ -15,13 +15,16 @@
     >
         <f:title>
             <f:DynamicPageTitle id="id"
-            class="admin_heading">
+            class="adminheading">
                 <f:heading>
                     <Title
                         id="idte"
                         text="Central Library"
                     />   
                 </f:heading>
+                	<f:expandedContent>
+						<Label text="Hello!!!{username}from Central Library"/>
+					</f:expandedContent>
                  
             </f:DynamicPageTitle>
         </f:title>
@@ -29,6 +32,7 @@
             <f:DynamicPageHeader
                 id="idDynamicPageHeader"
                 pinnable="true"
+            
             >
                 <HBox
                     id="idFilterHLayout"
@@ -160,13 +164,13 @@
         </f:header>
         <f:content>
             <Table
-                id="idBookTable"
-                  class="admin_view"
+                id="idBookTable" 
                 mode="MultiSelect"
                 alternateRowColors="true"
                 items="{ path:'/Book',  parameters : {
             $count : true
         }}"
+        class="adminview"
                 selectionChange="onSelectBook"
             >
                 <headerToolbar>
@@ -200,7 +204,7 @@
                         />
                     </OverflowToolbar>
                 </headerToolbar>
-                <columns>
+                <columns >
                     <Column id="idNameCol">
                         <Title
                             id="idTextColTitle"
@@ -231,17 +235,24 @@
                             text="Quantity"
                         />
                     </Column>
+                        <Column id="idAvlQCol">
+                        <Title
+                            id="idAvlquan"
+                            text="Avl_Quantity"
+                        />
+                    </Column>
                     <Column id="idDesCol">
                         <Title
                             id="idDes"
                             text="Description"
                         />
                     </Column>
+                   
                 </columns>
                 <items>
                     <ColumnListItem
                         id="idEmployeeTableColListItem"
-                     
+                     class="adminpagetab"
                     >
                         <cells>
                             <Text
@@ -263,6 +274,10 @@
                             <Text
                                 id="idNofbooksColValue"
                                 text="{No_of_books}"
+                            />
+                              <Text
+                                id="idAvlValue"
+                                text="{Avl_Quantity}"
                             />
                             <Text
                                 id="idPhoneColValue"

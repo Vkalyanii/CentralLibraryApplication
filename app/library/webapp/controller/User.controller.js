@@ -1,5 +1,8 @@
 sap.ui.define([
+    
+    "./BaseController",
     "sap/ui/core/mvc/Controller"
+   
   
   ],
     /**
@@ -23,11 +26,26 @@ sap.ui.define([
    
                 oObjectPage.bindElement(`/User(${id})`);
             },
-            onAllBooksPress:function(){
+            onAllBooksPress:function(oEvent){
+                console.log(oEvent.getSource().getParent().getBindingContext().getObject());
+                var user_id = oEvent.getSource().getParent().getBindingContext().getObject().ID;
                 var oRouter = this.getOwnerComponent().getRouter();
-                oRouter.navTo("RouteAllBooks")
+                oRouter.navTo("RouteAllBooks",{
+                    id :user_id
+           
+                })
             },
-        
+            onNotificationPress: async function () {
+                if (!this.notificationDialog) {
+                    this.notificationDialog = await this.loadFragment("Notify")
+                }
+                this.notificationDialog.open();
+            },
+            onCloseDialog: function () {
+                if (this.notificationDialog.isOpen()) {
+                    this.notificationDialog.close()
+                }
+            },
         
            
            

@@ -1,0 +1,254 @@
+{
+    "_version": "1.59.0",
+    "sap.app": {
+        "id": "com.app.library",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:basic",
+            "version": "1.13.4",
+            "toolsId": "a0b6fc9c-994e-40d4-9d8e-97ea8d513715"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "BookSRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "4.0"
+                }
+            },
+            "mainServiceV2": {
+                "uri": "v2/BookSRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [],
+                    "odataVersion": "2.0"
+                }
+            }
+        },
+        "crossNavigation": {
+            "inbounds": {
+                "Library App-display": {
+                    "semanticObject": "Library App",
+                    "action": "display",
+                    "title": "{{flpTitle}}",
+                    "signature": {
+                        "parameters": {},
+                        "additionalParameters": "allowed"
+                    }
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.124.0",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.f": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.ui.table": {},
+                "sap.ushell": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "com.app.library.i18n.i18n"
+                }
+            },
+            "": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            },
+            "modelv2": {
+                "dataSource": "mainServiceV2",
+                "preload": true,
+                "settings": {
+                    "synchronizationMode": "None",
+                    "operationMode": "Server",
+                    "autoExpandSelect": true,
+                    "earlyRequests": true
+                }
+            }
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "com.app.library.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false
+            },
+            "routes": [
+                {
+                    "name": "RouteHome",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetHome"
+                    ]
+                },
+                {
+                    "name": "RouteAdmin",
+                    "pattern": "Admin",
+                    "target": [
+                        "TargetAdmin"
+                    ]
+                },
+                {
+                    "name": "RouteActiveLoans",
+                    "pattern": "RouteActiveLoans",
+                    "target": [
+                        "TargetActiveloans"
+                    ]
+                },
+                {
+                    "name": "RouteIssueBooks",
+                    "pattern": "IssueBooks",
+                    "target": [
+                        "TargetIssueBooks"
+                    ]
+                },
+                {
+                    "name": "RouteUser",
+                    "pattern": "User/{id}",
+                    "target": [
+                        "TargetUser"
+                    ]
+                },
+                {
+                    "name": "RouteAllBooks",
+                    "pattern": "AllBooks/{id}",
+                    "target": [
+                        "TargetAllBooks"
+                    ]
+                },
+                {
+                    "name": "RouteAllUsers",
+                    "pattern": "RouteAllUsers",
+                    "target": [
+                        "TargetAllUsers"
+                    ]
+                },
+                {
+                    "name": "RouteParticularUser",
+                    "pattern": "RouteParticularUser/{id}",
+                    "target": [
+                        "TargetParticularUser"
+                    ]
+                }
+            ],
+            "targets": {
+                "TargetHome": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Home",
+                    "viewName": "Home"
+                },
+                "TargetAdmin": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "Admin",
+                    "viewName": "Admin"
+                },
+                "TargetActiveloans": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ActiveLoans",
+                    "viewName": "ActiveLoans"
+                },
+                "TargetIssueBooks": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "IssueBooks",
+                    "viewName": "IssueBooks"
+                },
+                "TargetUser": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "User",
+                    "viewName": "User"
+                },
+                "TargetAllBooks": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "AllBooks",
+                    "viewName": "AllBooks"
+                },
+                "TargetAllUsers": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "AllUsers",
+                    "viewName": "AllUsers"
+                },
+                "TargetParticularUser": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "ParticularUser",
+                    "viewName": "ParticularUser"
+                }
+            }
+        },
+        "rootView": {
+            "viewName": "com.app.library.view.App",
+            "type": "XML",
+            "async": true,
+            "id": "App"
+        }
+    }
+}

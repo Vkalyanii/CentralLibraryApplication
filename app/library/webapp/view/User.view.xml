@@ -29,11 +29,13 @@
 <expandedHeading>
 <m:Title id="IdLibraryTitle" text="Central Library" wrapping="true" />
 </expandedHeading>
+
  
         <snappedHeading>
 <m:FlexBox id="idFlexBoxHeaderContent" fitContainer="true" alignItems="Center">
 <m:Avatar id="idAvatar" src="" class="sapUiTinyMarginEnd" />
 <m:Title id="idUserName" wrapping="true" />
+
 </m:FlexBox>
 </snappedHeading>
  
@@ -48,6 +50,14 @@
                 text="All Books"
                 type="Emphasized"
                 press="onAllBooksPress"
+            />
+            <m:Button
+                id="idnote12"
+                class="sapUiSmallMarginEnd"
+                icon="sap-icon://bell"
+                tooltip="Notifications"
+                type="Transparent"
+                press="onNotificationPress"
             />
 </actions>
 </ObjectPageDynamicHeaderTitle>
@@ -71,23 +81,26 @@
                     id="idVerticalLayout"
                     class="sapUiSmallMarginBeginEnd"
                 >
-                    <m:Text
+                    <!-- <m:Text
                         id="idTextUserName"
                         text="{username}"
-                    />
-                     <m:Text
-                        id="idTextUserid"
-                        text=""
-                    />
-                    <m:Link
-                        id="idLink1"
-                        text="{Phone}"
-                    />
-                    <m:Link
-                        id="idLink2"
-                        text="{email}"
-                    />
-    
+                    /> -->
+                      <m:VBox class="sapUiSmallMarginEnd sapUiSmallMarginBottom">
+					<m:Title text="Contact Information" class="sapUiTinyMarginBottom" />
+
+					<m:HBox class="sapUiTinyyMarginBottom">
+						<core:Icon src="sap-icon://account"/>
+						<m:Link text="{username}" class="sapUiSmallMarginBegin"/>
+					</m:HBox>
+                  <m:HBox class="sapUiTinyyyMarginBottom">
+						<core:Icon src="sap-icon://outgoing-call"/>
+						<m:Link text="+91{Phone}" class="sapUiSmallMarginBegin"/>
+					</m:HBox>
+					<m:HBox>
+						<core:Icon src="sap-icon://email"/>
+						<m:Link text="{email}" class="sapUiSmallMarginBegin"/>
+					</m:HBox>
+                    </m:VBox>
                 </layout:VerticalLayout>
                 <layout:HorizontalLayout
                     id="idHorizontalLayout"
@@ -143,38 +156,10 @@
                                 mode="MultiSelect"
                                 alternateRowColors="true"
                                 items="{/BookLoan}"
-                               
+                                class="userviewtab"
                                
                             >
-                                <m:headerToolbar>
-                                    <m:OverflowToolbar
-                                        id="idBooksTableHeaderUserLoans"
-                                    >
-                                        <m:Title
-                                            id="idTableHeaderTitleUserLoans"
-                                            text=""
-                                        />
-                                        <m:ToolbarSpacer
-                                            id="idTableHeaderSpacerUserLoans"
-                                        />
-                                        <!-- <m:Button
-                                            id="idBtnNewBook"
-                                            text="New Book"
-                                            icon="sap-icon://add"
-                                            tooltip="Borrow New Book"
-                                            type="Success"
-                                            press="onBorrowNewBookPress"
-                                        /> -->
-                                        <m:Button
-                                            id="idBtnReturn"
-                                            press="onReturnBookPress"
-                                            icon="sap-icon://delete"
-                                            tooltip="Return Book"
-                                            text="Return Book"
-                                            type="Negative"
-                                        />
-                                    </m:OverflowToolbar>
-                                </m:headerToolbar>
+                              
                                 <m:columns>
                                     <m:Column id="idBookNameColUserLoans">
                                         <m:Title
@@ -204,24 +189,24 @@
                                 <m:items>
                                     <m:ColumnListItem
                                         id="idBooksTableColListItemUserLoans"
-                                        type="Navigation"
+                                   
                                     >
                                         <m:cells>
                                             <m:Text
                                                 id="idBookNameColValueUserLoans"
-                                                text="The End"
+                                                text="{book/Title}"
                                             />
                                             <m:Text
                                                 id="idAuthorColValueUserLoans"
-                                                text="James"
+                                                text="{book/Author}"
                                             />
                                             <m:Text
                                                 id="idISBNColValueUserLoans"
-                                                text="999-4567-09-456"
+                                                text="{book/ISBN}"
                                             />
                                             <m:Text
                                                 id="idDueDateValueUserLoans"
-                                                text="2024-06-23"
+                                                text="{due_Date}"
                                             />
                                         </m:cells>
                                     </m:ColumnListItem>
@@ -230,11 +215,7 @@
                         </blocks>
                     </ObjectPageSubSection>
                      
-                     
-
- 
- 
-                    
+             
                 </subSections>
             </ObjectPageSection>
  

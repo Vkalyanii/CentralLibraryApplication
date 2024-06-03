@@ -5,12 +5,36 @@
     background-position: center;
     height: 100vh;
 }
-.admin_view{
-   background-color: lightsalmon; 
+.adminview{
+  background-color: lavender;
 }
-admin_heading{
-    background-color: lightsalmon;
+.adminheading{
+    background-color:lavender;
 }
-issueLoan_view{
-    background-color: lightsalmon;
+.issueLoanview{
+    background-color:lavender;
+}
+.dialoglogin{
+    background-color:lavender;
+}
+.alluerstab{
+    background-color:lavender;
+}
+.Activeloans{
+    background-color:lavender;
+}
+.userviewtab{
+    background-color:lavender;
+}
+.allbookstab{
+    background-color:lavender;
+}
+.allbookshead{
+    background-color:lavender;
+}
+.adminpagetab{
+    background-color: lavender;
+}
+.issueLoanviewtab{
+    background-color: lavender;
 }

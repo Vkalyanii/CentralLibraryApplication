@@ -9,9 +9,9 @@
     <StandardListItem  id="ss" title="{users}" counter="{users}"></StandardListItem>
     </List> -->
     <Table
-        id="idUserLoans"
-        items="{/Bookloan}"
-        class="issueLoan_view"
+        id="idIssueBooks"
+        items="{/Reservation}"
+        class="issueLoanview"
         alternateRowColors="true"
         backgroundDesign="Transparent"
         mode="MultiSelect"
@@ -52,6 +52,12 @@
                     text="UserId"
                 />
             </Column>
+            <Column id="idUserColumn">
+                <Title
+                    id="idausertitle"
+                    text="UserName"
+                />
+            </Column>
             <Column id="idTitleColumn">
                 <Title
                     id="idTitle"
@@ -70,24 +76,29 @@
         </columns>
  
         <items>
-            <ColumnListItem id="idColumnListBooksLoan" type="Active">
+            <ColumnListItem id="idColumnListBooksLoan" type="Active"
+              class="issueLoanviewtab">
                 <cells>
                     <Text
                         id="idBISBNvalue"
-                        text="{book_ISBN}"
+                        text="{book/ISBN}"
                     />
                     <Text
                         id="idBookTitlevalue"
-                        text="{user_ID_ID}"
+                        text="{user_ID/ID}"
+                    />
+                     <Text
+                        id="idBookUservalue"
+                        text="{user_ID/username}"
                     />
                     <Text
                         id="idBUservalue"
-                        text="{Title}"
+                        text="{book/Title}"
                     />
                    
                     <Text
                         id="idIssuevalue"
-                        text="{ID}"
+                        text="{reservation_date}"
                     />
                     <!-- <Text
                         id="idduevalue"

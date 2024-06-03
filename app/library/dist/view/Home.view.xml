@@ -1,0 +1,45 @@
+<mvc:View
+    controllerName="com.app.library.controller.Home"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:l="sap.ui.layout"
+    xmlns:form="sap.ui.layout.form"
+    xmlns:core="sap.ui.core"
+    xmlns:html="http://www.w3.org/1999/xhtml"
+>
+    <html:head>
+        <html:link
+            rel="stylesheet"
+            type="text/css"
+            href="css/style.css"
+        />
+    </html:head>
+
+    <Page
+        id="page"
+        class ="page"
+        title="{i18n>title}"
+    >
+        <headerContent>
+            <Button
+                icon="sap-icon://visits"
+                id="idbtn"
+                text="Login"
+                type="Accept"
+                width="50%"
+                press="onloginBtnClick"
+            />
+             <Button
+                icon="sap-icon://add-employee"
+                id="idbtn1"
+                text="SignUp"
+                type="Emphasized"
+                width="50%"
+                press="onClickSignUp"
+            />
+        </headerContent>
+      
+
+    </Page>
+</mvc:View>

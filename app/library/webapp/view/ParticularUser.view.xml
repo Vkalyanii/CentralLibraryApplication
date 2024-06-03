@@ -62,63 +62,27 @@
 
 					<m:HBox class="sapUiTinyMarginBottom">
 						<core:Icon src="sap-icon://account"/>
-						<m:Link text=" John Miller" class="sapUiSmallMarginBegin"/>
+						<m:Link text="{username}" class="sapUiSmallMarginBegin"/>
 					</m:HBox>
 
 					<m:HBox class="sapUiTinyMarginBottom">
 						<core:Icon src="sap-icon://outgoing-call"/>
-						<m:Link text="+1234 5678" class="sapUiSmallMarginBegin"/>
+						<m:Link text="+91{Phone}" class="sapUiSmallMarginBegin"/>
 					</m:HBox>
 
 					<m:HBox>
 						<core:Icon src="sap-icon://email"/>
-						<m:Link text="john.miller@company.com" class="sapUiSmallMarginBegin"/>
+						<m:Link text="{email}" class="sapUiSmallMarginBegin"/>
 					</m:HBox>
 				</m:VBox>
-                <layout:VerticalLayout
-                    id="idVerticalLayout1"
-                    class="sapUiSmallMarginBeginEnd"
-                >
-                    <m:Text
-                        id="idTextUserName"
-                        text="{username}"
-                    />
-                     <m:Text
-                        id="idTextUserid"
-                        text="{ID}"
-                    />
-                    <m:Link
-                        id="idLink1"
-                        text=""
-                    />
-                    <m:Link
-                        id="idLink2"
-                        text=""
-                    />
-            
-                </layout:VerticalLayout>
-                <layout:HorizontalLayout
-                    id="idHorizontalLayout"
-                    class="sapUiSmallMarginBeginEnd"
-                >
-                    <m:Image
-                        id="idImage"
-                        src=""
-                    />
-                    <m:Image
-                        id="idImage2"
-                        src=""
-                        class="sapUiSmallMarginBegin"
-                    />
-                </layout:HorizontalLayout>
- 
+           
                 <layout:VerticalLayout
                     id="idVerticalLayout2"
                     class="sapUiSmallMarginBeginEnd"
                 >
                     <m:Label
                         id="idLabelForUserText"
-                        text="Hello {username} from Central Library"
+                        text="Hello!!{username} from Central Library"
                     />
                 </layout:VerticalLayout>
  
@@ -310,7 +274,7 @@
                                     <m:Column id="idDueDateColUserLoans">
                                         <m:Title
                                             id="idDueDateColTitleUserLoans"
-                                            text="Issued Status of book"
+                                            text="Book Title"
                                         />
                                     </m:Column>
                                 </m:columns>
@@ -326,7 +290,7 @@
                                             />
                                             <m:Text
                                                 id="idAuthorColValueUserLoans"
-                                                text="{user_ID}"
+                                                text="{user_ID/ID}"
                                             />
                                             <m:Text
                                                 id="idISBNColValueUserLoans"
@@ -334,7 +298,7 @@
                                             />
                                             <m:Text
                                                 id="idDueDateValueUserLoans"
-                                                text="{status}"
+                                                text="{book/Title}"
                                             />
                                         </m:cells>
                                     </m:ColumnListItem>

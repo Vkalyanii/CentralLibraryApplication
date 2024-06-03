@@ -15,9 +15,9 @@ entity Book :cuid{
         Genre       : String;
         No_of_books : String;
         Description : String;
-        user        : Association to User on user.book = $self;
-        bookLoan1    : Association to  BookLoan on bookLoan1.book = $self;
-        Reservation : Association to Reservation;
+        Avl_Quantity:String;
+        user        : Association to User;
+        bookLoan1   : Association to  BookLoan on bookLoan1.book = $self;
 }
 
 @assert.unique:{
@@ -32,23 +32,29 @@ entity User :cuid {
         FullName    : String;
         Address     : String;
         Phone       : types.Phone not null;
-        book        : Association to Book;
-        bookLoan    : Association to many BookLoan on bookLoan.user_ID = $self
+        book        : Association to many Book on book.user=$self;
+        bookLoan    : Association to many BookLoan on bookLoan.user_ID = $self;
+         reservation  : Association to many Reservation
+                  on reservation.user_ID = $self;
+  
 }   
 
 entity BookLoan : cuid{
-   
         user_ID     : Association to User;
         issue_Date  : Date;
         due_Date    : Date;
         return_Date : Date;
+        
         book        : Association to Book;
+        notify      :String;
+       
 }
 
 entity Reservation {
     key id          : UUID;
-        user_ID     : UUID;
+        user_ID     :Association to User;
     reservation_date: Date;
         status      : String;
         book        : Association to Book;
 }
+

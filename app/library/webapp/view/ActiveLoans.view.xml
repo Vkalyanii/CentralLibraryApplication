@@ -17,6 +17,7 @@
         items="{ path:'/BookLoan',  parameters : {
             $count : true
         }}"
+        class="Activeloans"
     >
      
      <!-- Header Tool Bar-->
@@ -24,7 +25,7 @@
             <OverflowToolbar id="idOverflowToolbar">
                 <Title
                     id="idUserLoanTitle"
-                    text="BookLoans"
+                    text="BookLoans : {/BookLoan/$count}"
                 />
                 <ToolbarSpacer id="idtoolbar" />
 
@@ -32,7 +33,7 @@
                 <Button
                     icon="sap-icon://inspect-down"
                     id="idEditbutton"
-                    type="Emphasized"
+                    type="Transparent"
                     text="Close Loan"
                     press="onButtonCloseLoanPress"
                 />

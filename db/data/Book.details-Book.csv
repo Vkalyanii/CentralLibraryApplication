@@ -1,10 +1,10 @@
-ID,ISBN,Title,Author,Genre,No_of_books,Description,Reservation_id
-8ad06640-037a-4453-b522-a0bcd4648d22,978−0−123456−78−9,The Hunger Games,Suzanne Collins,horror,45," A dystopian novel where a young girl participates in a deadly televised competition.",c149fff2-0e5c-4ff9-a15b-7fc83a580dfd
-407c3be1-80bb-4023-8ec0-7b225562e04d,978−1−234567−89−0,The Great Gatsby,F. Scott Fitzgerald,comedy,34,A classic novel about the American Dream and the tragic life of Jay Gatsby in the 1920s,c249fff2-0e5c-4ff9-a15b-7fc83a580dfd
-b6831e39-e70e-4ec8-aff3-8b43499cfe08,978−2−345678−90−1,"To Kill a Mockingbird ",Harper Lee,poetry,23,A story of racial injustice and moral growth in the Deep South during the 1930s.,c349fff2-0e5c-4ff9-a15b-7fc83a580dfd
-b2927ba3-542e-4399-9f78-aad78255c608,978−3−456789−01−2,1984,George Orwell,horror,34," A dystopian novel depicting a totalitarian regime that exercises extreme control over its citizens.",c449fff2-0e5c-4ff9-a15b-7fc83a580dfd
-e23b2eac-637e-4d26-8eff-55a086eb7b64,978−4−567890−12−3,"Pride and Prejudice  ",Jane Austen,comedy,23,A romantic novel that explores the manners and matrimonial machinations among the British gentry.,c549fff2-0e5c-4ff9-a15b-7fc83a580dfd
-f272ee88-724c-47af-9361-4ff8cff43ace,978−5−678901−23−4,"Harry Potter and the Sorcerer's Stone ",J.K. Rowling,poetry,4,The first book in the series where a young boy discovers he is a wizard and attends Hogwarts School of Witchcraft and Wizardry.,c649fff2-0e5c-4ff9-a15b-7fc83a580dfd
-54773536-c61e-481d-98f8-325d5d45c076,978−6−789012−34−5,"The Catcher in the Rye  The Hobbit ",J.D. Salinger,comedy,45,"A novel about teenage rebellion and alienation, narrated by the disaffected Holden Caulfield.",c749fff2-0e5c-4ff9-a15b-7fc83a580dfd
-521f2698-5098-4676-891e-d06f4f7dc647,978−7−890123−45−6,Pride and Prejudice,J.R.R. Tolkien,horror,45," A fantasy adventure where Bilbo Baggins embarks on a quest to help dwarves reclaim their homeland from a dragon.",c849fff2-0e5c-4ff9-a15b-7fc83a580dfd
-5581119c-aa52-433c-ae3b-19503c3f0544,978−8−901234−56−7,"The Da Vinci Code ",Dan Brown,comic,76,A romantic novel that explores the manners and matrimonial machinations among the British gentry.,c949fff2-0e5c-4ff9-a15b-7fc83a580dfd;0
+ID,ISBN,Title,Author,Genre,No_of_books,Description,Avl_Quantity
+8ad06640-037a-4453-b522-a0bcd4648d22,978−0−123456−78−9,The Hunger Games,Suzanne Collins,horror,45," A dystopian novel where a young girl participates in a deadly televised competition.",45
+407c3be1-80bb-4023-8ec0-7b225562e04d,978−1−234567−89−0,The Great Gatsby,F. Scott Fitzgerald,comedy,34,A classic novel about the American Dream and the tragic life of Jay Gatsby in the 1920s,34
+b6831e39-e70e-4ec8-aff3-8b43499cfe08,978−2−345678−90−1,"To Kill a Mockingbird ",Harper Lee,poetry,23,A story of racial injustice and moral growth in the Deep South during the 1930s.,23
+b2927ba3-542e-4399-9f78-aad78255c608,978−3−456789−01−2,1984,George Orwell,horror,34," A dystopian novel depicting a totalitarian regime that exercises extreme control over its citizens.",34
+e23b2eac-637e-4d26-8eff-55a086eb7b64,978−4−567890−12−3,"Pride and Prejudice  ",Jane Austen,comedy,23,A romantic novel that explores the manners and matrimonial machinations among the British gentry.,23
+f272ee88-724c-47af-9361-4ff8cff43ace,978−5−678901−23−4,"Harry Potter and the Sorcerer's Stone ",J.K. Rowling,poetry,4,The first book in the series where a young boy discovers he is a wizard and attends Hogwarts .,4
+54773536-c61e-481d-98f8-325d5d45c076,978−6−789012−34−5,"The Catcher in the Rye  The Hobbit ",J.D. Salinger,comedy,45,"A novel about teenage rebellion and alienation, narrated by the disaffected Holden Caulfield.",45
+521f2698-5098-4676-891e-d06f4f7dc647,978−7−890123−45−6,Pride and Prejudice,J.R.R. Tolkien,horror,45," A fantasy adventure where Bilbo Baggins embarks on a quest to help dwarves reclaim their homeland from a dragon.",45
+5581119c-aa52-433c-ae3b-19503c3f0544,978−8−901234−56−7,"The Da Vinci Code ",Dan Brown,comic,76,A romantic novel that explores the manners and matrimonial machinations among the British gentry.,76
