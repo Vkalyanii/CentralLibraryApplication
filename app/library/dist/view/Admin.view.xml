@@ -164,13 +164,13 @@
         </f:header>
         <f:content>
             <Table
-                id="idBookTable"
-                  class="adminview"
+                id="idBookTable" 
                 mode="MultiSelect"
                 alternateRowColors="true"
                 items="{ path:'/Book',  parameters : {
             $count : true
         }}"
+        class="adminview"
                 selectionChange="onSelectBook"
             >
                 <headerToolbar>
@@ -204,7 +204,7 @@
                         />
                     </OverflowToolbar>
                 </headerToolbar>
-                <columns>
+                <columns >
                     <Column id="idNameCol">
                         <Title
                             id="idTextColTitle"
@@ -252,7 +252,7 @@
                 <items>
                     <ColumnListItem
                         id="idEmployeeTableColListItem"
-                     
+                     class="adminpagetab"
                     >
                         <cells>
                             <Text

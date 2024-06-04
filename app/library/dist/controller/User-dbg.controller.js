@@ -1,4 +1,6 @@
 sap.ui.define([
+    
+    "./BaseController",
     "sap/ui/core/mvc/Controller"
    
   
@@ -35,7 +37,7 @@ sap.ui.define([
             },
             onNotificationPress: async function () {
                 if (!this.notificationDialog) {
-                    this.notificationDialog = await this.loadFragment("notifications")
+                    this.notificationDialog = await this.loadFragment("Notify")
                 }
                 this.notificationDialog.open();
             },

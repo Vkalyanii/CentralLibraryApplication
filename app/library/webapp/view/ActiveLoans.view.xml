@@ -42,6 +42,12 @@
         </headerToolbar>
 
         <columns>
+          <Column id="idIsbnumn">
+                <Title
+                    id="idIsbnttle"
+                    text="Book_id"
+                />
+            </Column>
             <Column id="idIsbnColumn">
                 <Title
                     id="idIsbntitle"
@@ -66,6 +72,12 @@
                     text="BooksISBN"
                 />
             </Column> -->
+                  <Column id="idReservaColumn1">
+                <Title
+                    id="idReservattitl1e"
+                    text="Avl_Quan"
+                />
+            </Column>
 
             <Column id="iddueColumn">
                 <Title
@@ -79,11 +91,16 @@
                     text="Due Date"
                 />
             </Column>
+        
         </columns>
 
         <items>
             <ColumnListItem id="idColumnListBooksLoan">
                 <cells>
+                  <Text
+                        id="idBISBNlue"
+                        text="{book/ID}"
+                    />
                     <Text
                         id="idBISBNvalue"
                         text="{book/ISBN}"
@@ -95,6 +112,10 @@
                     <Text
                         id="idBUservalue"
                         text="{user_ID/username}"
+                    />
+                     <Text
+                        id="idAvaliablityvalue"
+                        text="{book/Avl_Quantity}"
                     />
                    
                     <Text

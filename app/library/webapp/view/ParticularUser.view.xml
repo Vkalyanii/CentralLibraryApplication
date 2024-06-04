@@ -25,7 +25,7 @@
         sectionChange="onSectionChange"
     >
      <headerTitle>
-<ObjectPageDynamicHeaderTitle id="idObjectPageDynamicHeaderTitle">
+<ObjectPageDynamicHeaderTitle id="idObjectPageDynamicHeaderTitle" class="particulartabcol">
 <expandedHeading>
 <m:Title id="IdParticularUserTitle" text="Central Library" wrapping="true" />
 </expandedHeading>
@@ -38,7 +38,7 @@
 </snappedHeading>
  
         <expandedContent>
-<m:Text id="idWelcomeTag1" text="{username} Dashboard " />
+<m:Text id="idWelcomeTag1"  text="{username} Dashboard " />
 </expandedContent>
 
 </ObjectPageDynamicHeaderTitle>
@@ -115,7 +115,7 @@
                                 mode="MultiSelect"
                                 alternateRowColors="true"
                                 items="{/BookLoan}"
-                               
+                                   class="particulartabcol"
                             >
                                 <m:headerToolbar>
                                     <m:OverflowToolbar
@@ -175,7 +175,7 @@
                                 <m:items>
                                     <m:ColumnListItem
                                         id="idBooksTableColListItemUserLoans1"
-                                      
+                                            class="particulartabcol"
                                     >
                                         <m:cells>
                                             <m:Text
@@ -221,7 +221,7 @@
                                 mode="MultiSelect"
                                 alternateRowColors="true"
                                 items="{/Reservation}"
-                               
+                               class="partculartab"
                             >
                                 <m:headerToolbar>
                                     <m:OverflowToolbar
@@ -281,7 +281,7 @@
                                 <m:items>
                                     <m:ColumnListItem
                                         id="idBooksTableColListItemUserLoans"
-                                    
+                                         class="particulartabcol"
                                     >
                                         <m:cells>
                                             <m:Text

@@ -33,7 +33,7 @@
                 <Button
                     icon="sap-icon://inspect-down"
                     id="idEditbutton"
-                    type="Emphasized"
+                    type="Transparent"
                     text="Close Loan"
                     press="onButtonCloseLoanPress"
                 />

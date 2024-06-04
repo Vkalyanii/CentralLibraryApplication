@@ -122,11 +122,16 @@ sap.ui.define(
           }
           var oSelectedBook=this.byId("idAllBooksTable").getSelectedItem().getBindingContext().getObject()
           //console.log(oSelectedBook)
+          var oQuantity=oSelectedBook.Avl_Quantity-1;
+                console.log(oQuantity)
 
           const userModel = new sap.ui.model.json.JSONModel({
             user_ID_ID: user_id,
             book_ID: oSelectedBook.ID,
             reservation_date: new Date(),
+            book:{
+              Avl_Quantity:oQuantity
+            }
           });
           this.getView().setModel(userModel, "userModel");
 
@@ -138,6 +143,16 @@ sap.ui.define(
               sap.m.MessageBox.success("Book is Reserved");
               //this.getView().byId("idIssueBooks").getBinding("items").refresh();
               //this.oCreateBooksDialog.close();
+              oModel.update("/Book(" + oSelectedBook.ID + ")", oPayload.book, {
+                success: function() {
+                    this.getView().byId("idAllBooksTable").getBinding("items").refresh();
+                    //this.oEditBooksDialog.close();
+                }.bind(this),
+                error: function(oError) {
+                    //this.oEditBooksDialog.close();
+                    sap.m.MessageBox.error("Failed to update book: " + oError.message);
+                }.bind(this)
+            });
           } catch (error) {
               //this.oCreateBooksDialog.close();
               sap.m.MessageBox.error("Some technical Issue");

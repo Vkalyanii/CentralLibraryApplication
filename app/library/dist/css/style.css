@@ -6,29 +6,41 @@
     height: 100vh;
 }
 .adminview{
-   background-color: lightsalmon; 
+  background-color: lavender;
 }
 .adminheading{
-    background-color: lightsalmon;
+    background-color:lavender;
 }
 .issueLoanview{
-    background-color: lightsalmon;
+    background-color:lavender;
 }
 .dialoglogin{
-    background-color: lightsalmon;
+    background-color:lavender;
 }
 .alluerstab{
-    background-color: lightsalmon;
+    background-color:lavender;
 }
 .Activeloans{
-    background-color: lightsalmon;
+    background-color:lavender;
 }
 .userviewtab{
-    background-color: lightsalmon;
+    background-color:lavender;
 }
 .allbookstab{
-    background-color: lightsalmon;
+    background-color:lavender;
 }
 .allbookshead{
-    background-color: lightsalmon;
+    background-color:lavender;
+}
+.adminpagetab{
+    background-color: lavender;
+}
+.issueLoanviewtab{
+    background-color: lavender;
+}
+.particulartabcol{
+    background-color: lavender;
+}
+.particulartab{
+    background-color: lavender;
 }

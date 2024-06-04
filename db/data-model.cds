@@ -13,9 +13,9 @@ entity Book :cuid{
         Title       : String;
         Author      : String;
         Genre       : String;
-        No_of_books : String;
+        No_of_books : Integer;
         Description : String;
-        Avl_Quantity:String;
+        Avl_Quantity:Integer;
         user        : Association to User;
         bookLoan1   : Association to  BookLoan on bookLoan1.book = $self;
 }

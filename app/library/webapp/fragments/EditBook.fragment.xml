@@ -111,6 +111,16 @@
                     valueLiveUpdate="true"
                     value="{newBookModel>/Description}"
                 />
+                 <Label
+                    id="idavailability"
+                    text="Availability"
+                />
+                <Input
+                    id="idAvailabilityVal"
+                    editable="true"
+                    valueLiveUpdate="true"
+                    value="{newBookModel>/Avl_Quantity}"
+                />
             </form:SimpleForm>
         </content>
     </Dialog>

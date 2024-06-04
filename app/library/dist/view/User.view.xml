@@ -25,7 +25,7 @@
         sectionChange="onSectionChange"
     >
      <headerTitle>
-<ObjectPageDynamicHeaderTitle id="idObjectPageDynamicHeaderTitle">
+<ObjectPageDynamicHeaderTitle id="idObjectPageDynamicHeaderTitle" class="particulartabcol">
 <expandedHeading>
 <m:Title id="IdLibraryTitle" text="Central Library" wrapping="true" />
 </expandedHeading>
@@ -189,24 +189,24 @@
                                 <m:items>
                                     <m:ColumnListItem
                                         id="idBooksTableColListItemUserLoans"
-                                   
+                                            class="particulartabcol"
                                     >
                                         <m:cells>
                                             <m:Text
                                                 id="idBookNameColValueUserLoans"
-                                                text="The End"
+                                                text="{book/Title}"
                                             />
                                             <m:Text
                                                 id="idAuthorColValueUserLoans"
-                                                text="James"
+                                                text="{book/Author}"
                                             />
                                             <m:Text
                                                 id="idISBNColValueUserLoans"
-                                                text="999-4567-09-456"
+                                                text="{book/ISBN}"
                                             />
                                             <m:Text
                                                 id="idDueDateValueUserLoans"
-                                                text="2024-06-23"
+                                                text="{due_Date}"
                                             />
                                         </m:cells>
                                     </m:ColumnListItem>

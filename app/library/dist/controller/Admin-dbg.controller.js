@@ -238,6 +238,19 @@ sap.ui.define(
           var oGenree = oSelected.getBindingContext().getProperty("Genre");
           var oNo_of_Books = oSelected.getBindingContext().getProperty("No_of_books");
           var oDescriptionn = oSelected.getBindingContext().getProperty("Description");
+          var oQuantity1 = oSelected.getBindingContext().getProperty("Avl_Quantity");
+          // var oAq=oSelected.getBindingContext().getProperty("Avl_Quantity");
+          //           if(oAq===oQuantity){
+          //               oAq=oQuantity
+          //           }
+          //           else if(oAq<oQuantity){
+          //               let count=oQuantity-oAq
+          //               oAq=+count
+          //           }
+          //           else{
+          //               let count=oAq-oQuantity
+          //               oAq=-count
+          //           }
 
 
           var newBookModel = new sap.ui.model.json.JSONModel({
@@ -247,7 +260,8 @@ sap.ui.define(
             Title: otitle,
             Genre: oGenree,
             No_of_books: oNo_of_Books,
-            Description: oDescriptionn
+            Description: oDescriptionn,
+            Avl_Quantity:oQuantity1
 
           });
 

@@ -25,7 +25,7 @@
         sectionChange="onSectionChange"
     >
      <headerTitle>
-<ObjectPageDynamicHeaderTitle id="idObjectPageDynamicHeaderTitle">
+<ObjectPageDynamicHeaderTitle id="idObjectPageDynamicHeaderTitle" class="particulartabcol">
 <expandedHeading>
 <m:Title id="IdParticularUserTitle" text="Central Library" wrapping="true" />
 </expandedHeading>
@@ -38,7 +38,7 @@
 </snappedHeading>
  
         <expandedContent>
-<m:Text id="idWelcomeTag1" text="{username} Dashboard " />
+<m:Text id="idWelcomeTag1"  text="{username} Dashboard " />
 </expandedContent>
 
 </ObjectPageDynamicHeaderTitle>
@@ -115,7 +115,7 @@
                                 mode="MultiSelect"
                                 alternateRowColors="true"
                                 items="{/BookLoan}"
-                               
+                                   class="particulartabcol"
                             >
                                 <m:headerToolbar>
                                     <m:OverflowToolbar
@@ -175,7 +175,7 @@
                                 <m:items>
                                     <m:ColumnListItem
                                         id="idBooksTableColListItemUserLoans1"
-                                      
+                                            class="particulartabcol"
                                     >
                                         <m:cells>
                                             <m:Text
@@ -221,7 +221,7 @@
                                 mode="MultiSelect"
                                 alternateRowColors="true"
                                 items="{/Reservation}"
-                               
+                               class="partculartab"
                             >
                                 <m:headerToolbar>
                                     <m:OverflowToolbar
@@ -274,14 +274,14 @@
                                     <m:Column id="idDueDateColUserLoans">
                                         <m:Title
                                             id="idDueDateColTitleUserLoans"
-                                            text="Issued Status of book"
+                                            text="Book Title"
                                         />
                                     </m:Column>
                                 </m:columns>
                                 <m:items>
                                     <m:ColumnListItem
                                         id="idBooksTableColListItemUserLoans"
-                                    
+                                         class="particulartabcol"
                                     >
                                         <m:cells>
                                             <m:Text
@@ -290,7 +290,7 @@
                                             />
                                             <m:Text
                                                 id="idAuthorColValueUserLoans"
-                                                text="{user_ID}"
+                                                text="{user_ID/ID}"
                                             />
                                             <m:Text
                                                 id="idISBNColValueUserLoans"
@@ -298,7 +298,7 @@
                                             />
                                             <m:Text
                                                 id="idDueDateValueUserLoans"
-                                                text="{status}"
+                                                text="{book/Title}"
                                             />
                                         </m:cells>
                                     </m:ColumnListItem>

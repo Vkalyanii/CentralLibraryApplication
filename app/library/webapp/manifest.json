@@ -135,7 +135,7 @@
         },
         {
           "name": "RouteAdmin",
-          "pattern": "Admin",
+          "pattern": "Admin/{id}",
           "target": ["TargetAdmin"]
         },
         {

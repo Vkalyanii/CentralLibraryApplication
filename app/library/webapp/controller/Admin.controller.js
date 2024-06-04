@@ -15,6 +15,9 @@ sap.ui.define(
 
     return Controller.extend("com.app.library.controller.Admin", {
       onInit: function () {
+        const oRouter = this.getOwnerComponent().getRouter();
+        oRouter.attachRoutePatternMatched(this.onUserDetailsLoad,this);
+
         //     var oTable=this.byId("idBookTable");
         //     var oBinding =oTable.getBinding("items");
         //     oBinding.attachChange(this._updateRowCount.bind(this));
@@ -32,7 +35,7 @@ sap.ui.define(
           Title: "",
           Author: "",
           Genre: "",
-          No_of_books: "",
+          No_of_books: 0,
           Description: "",
         });
         this.getView().setModel(oLocalModel, "localModel");
@@ -80,6 +83,15 @@ sap.ui.define(
       onBookListLoad: function () {
         this.getView().byId("idBookTable").getBinding("items").refresh();
       },
+    
+    onUserDetailsLoad:function(oEvent){
+        const{id}=oEvent.getParameter("arguments");
+        this.ID=id;
+        //const sRouterName=oEvent.getParameter("name");
+        const oObjectPage=this.getView().byId("idBooks");
+
+        oObjectPage.bindElement(`/User(${id})`);
+    },
 
       onGoPress: function () {
         /**
@@ -238,6 +250,19 @@ sap.ui.define(
           var oGenree = oSelected.getBindingContext().getProperty("Genre");
           var oNo_of_Books = oSelected.getBindingContext().getProperty("No_of_books");
           var oDescriptionn = oSelected.getBindingContext().getProperty("Description");
+          var oQuantity1 = oSelected.getBindingContext().getProperty("Avl_Quantity");
+          // var oAq=oSelected.getBindingContext().getProperty("Avl_Quantity");
+          //           if(oAq===oQuantity){
+          //               oAq=oQuantity
+          //           }
+          //           else if(oAq<oQuantity){
+          //               let count=oQuantity-oAq
+          //               oAq=+count
+          //           }
+          //           else{
+          //               let count=oAq-oQuantity
+          //               oAq=-count
+          //           }
 
 
           var newBookModel = new sap.ui.model.json.JSONModel({
@@ -247,7 +272,8 @@ sap.ui.define(
             Title: otitle,
             Genre: oGenree,
             No_of_books: oNo_of_Books,
-            Description: oDescriptionn
+            Description: oDescriptionn,
+            Avl_Quantity:oQuantity1
 
           });
 

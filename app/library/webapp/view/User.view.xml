@@ -25,7 +25,7 @@
         sectionChange="onSectionChange"
     >
      <headerTitle>
-<ObjectPageDynamicHeaderTitle id="idObjectPageDynamicHeaderTitle">
+<ObjectPageDynamicHeaderTitle id="idObjectPageDynamicHeaderTitle" class="particulartabcol">
 <expandedHeading>
 <m:Title id="IdLibraryTitle" text="Central Library" wrapping="true" />
 </expandedHeading>
@@ -156,7 +156,7 @@
                                 mode="MultiSelect"
                                 alternateRowColors="true"
                                 items="{/BookLoan}"
-                                class="userviewtab"
+                                class="userTtab"
                                
                             >
                               
@@ -189,7 +189,7 @@
                                 <m:items>
                                     <m:ColumnListItem
                                         id="idBooksTableColListItemUserLoans"
-                                   
+                                            class="userTab"
                                     >
                                         <m:cells>
                                             <m:Text

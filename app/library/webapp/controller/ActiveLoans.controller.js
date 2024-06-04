@@ -26,6 +26,39 @@ sap.ui.define([
                     oView.byId("_IDGenTable1").getBinding("items").getHeaderContext());
             },
             onButtonCloseLoanPress:async function () {
+                //console.log(this.byId("idUserLoans").getSelectedItem().getBindingContext().getObject())
+                var obj = this.byId("idUserLoans").getSelectedItem().getBindingContext().getObject(),
+                oId=obj.book.ID,
+                oAvaiable = obj.book.Avl_Quantity+1;
+                var aSelectedItems = this.byId("idUserLoans").getSelectedItems();
+                console.log()
+                const userModel = new sap.ui.model.json.JSONModel({
+                   
+                    book:{
+                        Avl_Quantity:oAvaiable
+                    }
+ 
+                });
+                this.getView().setModel(userModel, "userModel");
+ 
+                const oPayload = this.getView().getModel("userModel").getProperty("/"),
+                    oModel = this.getView().getModel("modelv2");
+                    try{
+                    oModel.update("/Book(" + oId + ")", oPayload.book, {
+                        success: function() {
+                            this.getView().byId("idBooksTable").getBinding("items").refresh();//
+                            //this.oEditBooksDialog.close();
+                        },
+                        error: function(oError) {
+                            //this.oEditBooksDialog.close();
+                            sap.m.MessageBox.error("Failed to update book: " + oError.message);
+                        }.bind(this)
+                    });
+                }catch (error) {
+                    //this.oCreateBooksDialog.close();
+                    sap.m.MessageBox.error("Some technical Issue");
+                }
+
                 var aSelectedItems = this.byId("idUserLoans").getSelectedItems();
                 if (aSelectedItems.length > 0) {
                     var aISBNs = [];
