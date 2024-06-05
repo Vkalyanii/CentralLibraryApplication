@@ -106,7 +106,7 @@
                 />
                 <Input
                     id="idDDescriptionInput"
-                    value="{localModel>/Descrption}"
+                    value="{localModel>/Description}"
                 />
                
             </form:SimpleForm>
