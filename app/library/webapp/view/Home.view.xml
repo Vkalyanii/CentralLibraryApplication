@@ -26,7 +26,7 @@
                 icon="sap-icon://visits"
                 id="idbtn"
                 text="Login"
-                type="Accept"
+                type="Transparent"
                 width="50%"
                 press="onloginBtnClick"
             />
@@ -34,7 +34,7 @@
                 icon="sap-icon://add-employee"
                 id="idbtn1"
                 text="SignUp"
-                type="Emphasized"
+                type="Transparent"
                 width="50%"
                 press="onClickSignUp"
             />

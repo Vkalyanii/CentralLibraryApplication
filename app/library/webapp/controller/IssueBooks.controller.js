@@ -11,6 +11,9 @@ sap.ui.define(
     return Controller.extend("com.app.library.controller.IssueBooks", {
       onInit: function () {
        
+        var oTable = this.byId("idIssueBooks");
+        var oColumn1 = oTable.getColumns()[6]; 
+        oColumn1.setVisible(false);
       },
 
       onIssueBookPress: async function (oEvent) {

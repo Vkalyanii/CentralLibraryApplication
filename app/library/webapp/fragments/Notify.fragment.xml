@@ -30,10 +30,7 @@
          
         alternateRowColors="true"
         backgroundDesign="Transparent"
-       
-        items="{ path:'/BookLoan',  parameters : {
-            $count : true
-        }}"
+     items = "{bookLoan}"
     >
         <columns>
             <Column id="idIsbnColumn">

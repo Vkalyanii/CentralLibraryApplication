@@ -40,6 +40,9 @@ sap.ui.define([
                     this.notificationDialog = await this.loadFragment("Notify")
                 }
                 this.notificationDialog.open();
+                const oObjectPage = this.getView().byId("idloginDialog");
+ 
+                oObjectPage.bindElement(`/User(${this.ID})`);
             },
             onCloseDialog: function () {
                 if (this.notificationDialog.isOpen()) {

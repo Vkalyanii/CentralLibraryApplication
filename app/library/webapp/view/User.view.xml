@@ -155,7 +155,7 @@
                                 id="idUserActiveLoanTable"
                                 mode="MultiSelect"
                                 alternateRowColors="true"
-                                items="{/BookLoan}"
+                                items="{bookLoan}"
                                 class="userTtab"
                                
                             >

@@ -96,7 +96,21 @@ sap.ui.define(
 
         const oPayload = this.getView().getModel("localModel").getProperty("/"),
           oModel = this.getView().getModel("modelv2");
+     
+
+          if (oPayload.username && oPayload.password) {
+        }
+        else {
+            sap.m.MessageBox.error("Please enter valid details");
+            return
+        }
         try {
+            const oTitleExist = await this.checkUserName(oModel, oPayload.username, oPayload.password)
+            if (oTitleExist) {
+                MessageToast.show("User already exsist")
+                return
+            }
+
           await this.createData(oModel, oPayload, "/User");
           // this.getView().byId("idBooksTable").getBinding("items").refresh();
           this.oSignupDialog.close();
@@ -106,7 +120,27 @@ sap.ui.define(
          sap.m.MessageBox.error("Some technical Issue");
         }
       },
-      onClickSignUp: async function () {
+  
+  checkUserName: async function (oModel, sUsername, sPassword) {
+      return new Promise((resolve, reject) => {
+          oModel.read("/User", {
+              filters: [
+                  new Filter("username", FilterOperator.EQ, sUsername),
+                  new Filter("password", FilterOperator.EQ, sPassword)
+
+              ],
+              success: function (oData) {
+                  resolve(oData.results.length > 0);
+              },
+              error: function () {
+                  reject(
+                      "An error occurred while checking username existence."
+                  );
+              }
+          })
+      })
+  },
+      onClickSignUp: async function() {
         if (!this.oSignupDialog) {
           this.oSignupDialog = await this.loadFragment("SignUpDialogue")
         }
