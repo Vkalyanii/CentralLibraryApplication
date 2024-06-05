@@ -176,6 +176,8 @@
                                     <m:Column id="idISBNColUserLoans">
                                         <m:Title
                                             id="idISBNColTitleUserLoans"
+
+                                            
                                             text="ISBN"
                                         />
                                     </m:Column>
