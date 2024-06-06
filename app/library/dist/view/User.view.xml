@@ -155,8 +155,8 @@
                                 id="idUserActiveLoanTable"
                                 mode="MultiSelect"
                                 alternateRowColors="true"
-                                items="{/BookLoan}"
-                                class="userviewtab"
+                                items="{bookLoan}"
+                                class="userTtab"
                                
                             >
                               
@@ -176,6 +176,8 @@
                                     <m:Column id="idISBNColUserLoans">
                                         <m:Title
                                             id="idISBNColTitleUserLoans"
+
+                                            
                                             text="ISBN"
                                         />
                                     </m:Column>
@@ -189,7 +191,7 @@
                                 <m:items>
                                     <m:ColumnListItem
                                         id="idBooksTableColListItemUserLoans"
-                                            class="particulartabcol"
+                                            class="userTab"
                                     >
                                         <m:cells>
                                             <m:Text

@@ -143,16 +143,16 @@ sap.ui.define(
               sap.m.MessageBox.success("Book is Reserved");
               //this.getView().byId("idIssueBooks").getBinding("items").refresh();
               //this.oCreateBooksDialog.close();
-              oModel.update("/Book(" + oSelectedBook.ID + ")", oPayload.book, {
-                success: function() {
-                    this.getView().byId("idAllBooksTable").getBinding("items").refresh();
-                    //this.oEditBooksDialog.close();
-                }.bind(this),
-                error: function(oError) {
-                    //this.oEditBooksDialog.close();
-                    sap.m.MessageBox.error("Failed to update book: " + oError.message);
-                }.bind(this)
-            });
+            //   oModel.update("/Book(" + oSelectedBook.ID + ")", oPayload.book, {
+            //     success: function() {
+            //         this.getView().byId("idAllBooksTable").getBinding("items").refresh();
+            //         //this.oEditBooksDialog.close();
+            //     }.bind(this),
+            //     error: function(oError) {
+            //         //this.oEditBooksDialog.close();
+            //         sap.m.MessageBox.error("Failed to update book: " + oError.message);
+            //     }.bind(this)
+            // });
           } catch (error) {
               //this.oCreateBooksDialog.close();
               sap.m.MessageBox.error("Some technical Issue");

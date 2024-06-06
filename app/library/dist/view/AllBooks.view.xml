@@ -189,7 +189,8 @@
                 <items>
                     <ColumnListItem
                         id="idEmployeeTableColListItem1"
-                        type="Navigation"
+                    
+                         class="allbookstab"
                     >
                         <cells>
                             <Text

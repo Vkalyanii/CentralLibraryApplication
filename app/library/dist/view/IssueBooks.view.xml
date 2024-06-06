@@ -78,6 +78,13 @@
                     text="Reservation_date"
                 />
             </Column>
+            
+            <Column id="idReservaColumn" visible="false">
+                <Title
+                    id="idReservattitle"
+                    text="Avl_Quan"
+                />
+            </Column>
 
         </columns>
  
@@ -110,10 +117,10 @@
                         id="idIssuevalue"
                         text="{reservation_date}"
                     />
-                    <!-- <Text
-                        id="idduevalue"
-                        text="{dueDate}"
-                    /> -->
+                     <Text
+                        id="idAvaliablityvalue"
+                        text="{book/Avl_Quantity}"
+                    />
                 </cells>
             </ColumnListItem>
         </items>
