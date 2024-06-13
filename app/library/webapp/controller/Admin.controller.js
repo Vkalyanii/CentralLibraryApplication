@@ -432,8 +432,20 @@ sap.ui.define(
             })
         })
     },
-
-
-    });
-  });
-
+    OnSignoutClick:function(){
+      var oRouter = this.getOwnerComponent().getRouter();
+                      oRouter.navTo("RouteHome", { },true)
+  },
+  onAdminNotificationPress:async function(){
+    if (!this.oLoginDialog) {
+        this.oLoginDialog = await this.loadFragment("NewUserSignUp")
+    }
+    this.oLoginDialog.open();
+},
+onCloseDialog1:function(){
+    if (this.oLoginDialog.isOpen()) {
+        this.oLoginDialog.close()
+    }
+}
+});
+});

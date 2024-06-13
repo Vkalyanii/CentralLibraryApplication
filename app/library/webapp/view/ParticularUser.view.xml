@@ -80,10 +80,10 @@
                     id="idVerticalLayout2"
                     class="sapUiSmallMarginBeginEnd"
                 >
-                    <m:Label
+                    <!-- <m:Label
                         id="idLabelForUserText"
                         text="Hello!!{username} from Central Library"
-                    />
+                    /> -->
                 </layout:VerticalLayout>
  
                 <layout:VerticalLayout

@@ -49,7 +49,10 @@ sap.ui.define([
                     this.notificationDialog.close()
                 }
             },
-        
+            onSignoutClick:function(){
+                var oRouter = this.getOwnerComponent().getRouter();
+                                oRouter.navTo("RouteHome", { },true)
+            },
            
            
         });

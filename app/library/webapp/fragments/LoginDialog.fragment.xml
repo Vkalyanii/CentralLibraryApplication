@@ -4,7 +4,7 @@
     xmlns="sap.m"
 >
     <Dialog
-        id="idLoginDialog"
+        id="idLoginnnnDialog"
         resizable="true"
         draggable="true"
         contentWidth="30%"
@@ -18,7 +18,7 @@
             </contentLeft>
                 <contentRight>
                     <Button
-                        id="cancelbtn"
+                        id="cancelbtnnnnid"
                         icon="sap-icon://decline"
                         press="oncancelbtn"
                         type="Transparent"

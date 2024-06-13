@@ -132,6 +132,7 @@ sap.ui.define(
           const userModel = new sap.ui.model.json.JSONModel({
             user_ID_ID: user_id,
             book_ID: oSelectedBook.ID,
+            
             reservation_date: new Date(),
             book:{
               Avl_Quantity:oQuantity

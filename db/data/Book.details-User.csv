@@ -1,9 +1,10 @@
 ID,username,userType,password,email,FullName,Address,Phone
-8c57c47a-62a8-49b4-841a-6cb12aece256,Ram,user,Ram@123,Ram1111@gmail.com,Ram sreeram,hyd,9876543345,978−0−123456−78−9
-930776e4-5c1e-4d93-a2f6-94de8d458b8a,Syam,user,Syam@123,Syam2222@gmail.com,Syam singh,myp,8765423456,978−1−234567−89−0
-5d9e637f-32be-41e1-9208-05ec41c2ba91,Rahul,user,Rahul@123,Rahul3333@gmail.com,Rahul chaudhari,secunderabad,9876345636,978−2−345678−90−1
-b95a6e9b-88e6-4c84-9d68-28e238af8f06,Nilesh,user,Nilesh@123,Nilesh4444@gmail.com,Nilesh Solunke,gujarat,9234587653,978−3−456789−01−2
-e1ab6a7e-e5a6-4ffb-8f8b-25b8bfbf02e7,Ajay,user,Ajay@123,Ajay5555@gmail.com,Ajay bharat,AP,8345612376,978−4−567890−12−3
-8d9b4992-6854-4a93-9e6d-09e28c72c2aa,Kalyani,Admin,Kalyani@123,Kalyani7777@gmail.com,Kalyani viswanadhuni,Mumbai,9467234762,978−6−789012−34−5
-1e9f9d11-68a5-4dc8-a16b-28c43e2c6b9f,Dev,user,Dev@123,Dev8888@gmail.com,Dev Goud,Chennai,9534567823,978−7−890123−45−6
-0b9f7b37-10fc-42c1-9b92-469f6c0e1e13,Teja,Admin,teja@123,teja9999@gmail.com,Teja karanki,koduru,9134563456,978−8−901234−56−7S
+8c57c47a-62a8-49b4-841a-6cb12aece256,Ram,user,Ram@123,Ram1111@gmail.com,Ram sreeram,hyd,9876543345
+930776e4-5c1e-4d93-a2f6-94de8d458b8a,Syam,user,Syam@123,Syam2222@gmail.com,Syam singh,myp,8765423456
+5d9e637f-32be-41e1-9208-05ec41c2ba91,Rahul,user,Rahul@123,Rahul3333@gmail.com,Rahul chaudhari,secunderabad,9876345636
+b95a6e9b-88e6-4c84-9d68-28e238af8f06,Nilesh,user,Nilesh@123,Nilesh4444@gmail.com,Nilesh Solunke,gujarat,9234587653
+e1ab6a7e-e5a6-4ffb-8f8b-25b8bfbf02e7,Ajay,user,Ajay@123,Ajay5555@gmail.com,Ajay bharat,AP,8345612376
+8d9b4992-6854-4a93-9e6d-09e28c72c2aa,Kalyani,Admin,Kalyani@123,Kalyani7777@gmail.com,Kalyani viswanadhuni,Mumbai,9467234762
+1e9f9d11-68a5-4dc8-a16b-28c43e2c6b9f,Dev,user,Dev@123,Dev8888@gmail.com,Dev Goud,Chennai,9534567823
+0b9f7b37-10fc-42c1-9b92-469f6c0e1e13,Teja,Admin,teja@123,teja9999@gmail.com,Teja karanki,koduru,9134563456
+

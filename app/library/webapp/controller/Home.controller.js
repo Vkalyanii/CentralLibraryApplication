@@ -6,6 +6,8 @@ sap.ui.define(
     "sap/ui/model/Filter",
     "sap/ui/model/FilterOperator",
     "sap/ui/model/json/JSONModel",
+    "sap/ui/core/Fragment",
+	
   ],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
@@ -16,7 +18,9 @@ sap.ui.define(
     ODataModel,
     Filter,
     FilterOperator,
-    JSONModel
+    JSONModel,
+    Fragment,
+  
   ) {
     "use strict";
 
@@ -208,7 +212,44 @@ checkPhone: async function (oModel, sPhone) {
           this.oSignupDialog.close()
         }
       },
+      onhandleCompanyQuickViewPress : async function () {
+        if (!this.notificationDialog1) {
+            this.notificationDialog1 = await this.loadFragment("HomePageCompanyDetails")
+        }
+        this.notificationDialog1.open();
+      },
+       onAdminDetailscancelbtn: function () {
+        this.notificationDialog1.open();
+        this.notificationDialog1.close();
+        
+      },
+      AvailableBooksBtn: async function () {
+        if (!this.libraryinfo) {
+            this.libraryinfo = await this.loadFragment("libraryinfo")
+        }
+        this.libraryinfo.open();
+    },
+    onlibraryclosedialog: function () {
+        if(this.libraryinfo.isOpen()){
+        this.libraryinfo.close()
+        }
+    },
+
+        // const oObjectPage = this.getView().byId("idloginDialog");
+
+        // oObjectPage.bindElement(`/User(${this.ID})`);
+    
+      // onNavigate: function (oEvent) {
+      //   var oNavOrigin = oEvent.getParameter("navOrigin");
+      //   if (oNavOrigin) {
+      //     MessageToast.show("Link '" + oNavOrigin.getText() + "' was clicked");
+      //   } else {
+      //     MessageToast.show("Back button was clicked");
+      //   }
+    }
+    )
+
+  
 
     });
-  }
-);
+;

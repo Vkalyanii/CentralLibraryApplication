@@ -104,12 +104,30 @@ sap.ui.define(
             sap.m.MessageBox.error("Please enter valid details");
             return
         }
+        var emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        var phoneRegex=/^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/
+        if(!(emailRegex.test(oPayload.email)&&phoneRegex.test(oPayload.Phone))){
+            MessageToast.show("please enter valid email and password")
+            return
+        }
         try {
-            const oTitleExist = await this.checkUserName(oModel, oPayload.username, oPayload.password)
+            var oTitleExist = await this.checkUserName(oModel, oPayload.username, oPayload.password)
+            var OemailCheck=await this.checkEmail(oModel,oPayload.email)
+            var oPhoneCheck=await this.checkPhone(oModel,oPayload.Phone)
+        // try {
+        //     //const oTitleExist = await this.checkUserName(oModel, oPayload.username, oPayload.password)
             if (oTitleExist) {
                 MessageToast.show("User already exsist")
                 return
-            }
+              }
+              if(OemailCheck){
+                  MessageToast.show("Email already exsist for another user please enter vaild email ")
+                  return
+              }
+              if(oPhoneCheck){
+                  MessageToast.show("PhoneNumber already exsist for another user please enter valid Phonenumber")
+                  return
+              }
 
           await this.createData(oModel, oPayload, "/User");
           // this.getView().byId("idBooksTable").getBinding("items").refresh();
@@ -118,6 +136,7 @@ sap.ui.define(
         } catch (error) {
           this.oSignupDialog.close();
          sap.m.MessageBox.error("Some technical Issue");
+    
         }
       },
   
@@ -140,6 +159,44 @@ sap.ui.define(
           })
       })
   },
+  checkEmail: async function (oModel, semail) {
+    return new Promise((resolve, reject) => {
+        oModel.read("/User", {
+            filters: [
+                new Filter("email", FilterOperator.EQ, semail),
+                //new Filter("password", FilterOperator.EQ, sPassword)
+
+            ],
+            success: function (oData) {
+                resolve(oData.results.length > 0);
+            },
+            error: function () {
+                reject(
+                    "An error occurred while checking username existence."
+                );
+            }
+        })
+    })
+},
+checkPhone: async function (oModel, sPhone) {
+  return new Promise((resolve, reject) => {
+      oModel.read("/User", {
+          filters: [
+              new Filter("Phone", FilterOperator.EQ, sPhone),
+              //new Filter("password", FilterOperator.EQ, sPassword)
+
+          ],
+          success: function (oData) {
+              resolve(oData.results.length > 0);
+          },
+          error: function () {
+              reject(
+                  "An error occurred while checking username existence."
+              );
+          }
+      })
+  })
+},
       onClickSignUp: async function() {
         if (!this.oSignupDialog) {
           this.oSignupDialog = await this.loadFragment("SignUpDialogue")

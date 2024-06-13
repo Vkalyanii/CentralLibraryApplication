@@ -121,7 +121,11 @@ sap.ui.define(
               return
           }
           var oSelectedBook=this.byId("idAllBooksTable").getSelectedItem().getBindingContext().getObject()
-          //console.log(oSelectedBook)
+          console.log(oSelectedBook.Avl_Quantity)
+                if(oSelectedBook.Avl_Quantity===0){
+                    MessageToast.show("Book not available")
+                    return
+                }
           var oQuantity=oSelectedBook.Avl_Quantity-1;
                 console.log(oQuantity)
 

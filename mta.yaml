@@ -36,17 +36,22 @@ modules:
           forwardAuthToken: false
           name: ui5
           url: https://ui5.sap.com
+      - name: mtx-api
+        group: destinations
+        properties:
+          name: mtx-api # must be used in xs-app.json as well
+          url: ~{mtx-url}
     parameters:
       disk-quota: 256M
       keep-existing-routes: true
       memory: 256M
-  - name: centrallibrarysystem-db-deployer
-    type: hdb
-    path: db
-    requires:
-      - name: centrallibrarysystem-db
-    parameters:
-      buildpack: nodejs_buildpack
+    properties:
+      TENANT_HOST_PATTERN: "^(.*)-${default-uri}"
+    provides:
+      - name: app-api
+        properties:
+          app-protocol: ${protocol}
+          app-uri: ${default-uri}
   - name: centrallibrarysystem-app-content
     type: com.sap.application.content
     path: .
@@ -87,21 +92,35 @@ modules:
         - npm run build:cf
       supported-platforms:
         []
+  - name: centrallibrarysystem-mtx
+    type: nodejs
+    path: gen/mtx/sidecar
+    requires:
+      - name: app-api
+        properties:
+          SUBSCRIPTION_URL: ~{app-protocol}://\${tenant_subdomain}-~{app-uri}
+      - name: centrallibrarysystem-db
+      - name: centrallibrarysystem-registry
+      - name: centrallibrarysystem-auth
+    build-parameters:
+      builder: npm-ci
+    parameters:
+      memory: 256M
+      disk-quota: 512M
+    provides:
+      - name: mtx-api
+        properties:
+          mtx-url: ${default-url}
 resources:
   - name: centrallibrarysystem-auth
     type: org.cloudfoundry.managed-service
     parameters:
       config:
-        tenant-mode: dedicated
+        tenant-mode: shared
         xsappname: centrallibrarysystem-${org}-${space}
       path: ./xs-security.json
       service: xsuaa
       service-plan: application
-  - name: centrallibrarysystem-db
-    type: com.sap.xs.hdi-container
-    parameters:
-      service: hana
-      service-plan: hdi-shared
   - name: centrallibrarysystem-repo-host
     type: org.cloudfoundry.managed-service
     parameters:
@@ -135,6 +154,31 @@ resources:
       service-plan: lite
     requires:
       - name: srv-api
+  - name: centrallibrarysystem-db
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: service-manager
+      service-plan: container
+  - name: centrallibrarysystem-registry
+    type: org.cloudfoundry.managed-service
+    requires:
+      - name: mtx-api
+    parameters:
+      service: saas-registry
+      service-plan: application
+      config:
+        xsappname: centrallibrarysystem-${org}-${space}
+        appName: centrallibrarysystem-${org}-${space}
+        displayName: centrallibrarysystem
+        description: A simple CAP project.
+        category: 'Category'
+        appUrls:
+          getDependencies: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/dependencies
+          onSubscription: ~{mtx-api/mtx-url}/-/cds/saas-provisioning/tenant/{tenantId}
+          onSubscriptionAsync: true
+          onUnSubscriptionAsync: true
+          onUpdateDependenciesAsync: true
+          callbackTimeoutMillis: 300000 # Increase if your deployments are taking longer than that
 parameters:
   deploy_mode: html5-repo
   enable-parallel-deployments: true

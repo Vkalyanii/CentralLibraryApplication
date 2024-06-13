@@ -48,7 +48,7 @@
                 id="idallbooks12"
                 class="sapUiSmallMarginEnd"
                 text="All Books"
-                type="Emphasized"
+                type="Transparent"
                 press="onAllBooksPress"
             />
             <m:Button
@@ -59,12 +59,36 @@
                 type="Transparent"
                 press="onNotificationPress"
             />
+    
+            <!-- <m:Button
+                id="idallbooks"
+                icon="sap-icon://customer"
+                class="sapUiSmallMarginEnd"
+            tooltip="My account"
+                type="Transparent"
+                press="onSignoutClick"
+                 /> -->
+
+                 <m:MenuButton
+                id="_IDMenuButton1"
+                icon="sap-icon://customer"
+              
+            >
+                <m:Menu id="_IDMenu1">
+                    <m:items>
+                        <m:MenuItem
+                            id="_IDMenuItem1"
+                            text="Signout"
+                           press="onSignoutClick"
+                        />
+                    </m:items>
+                </m:Menu>
+            </m:MenuButton>          
 </actions>
 </ObjectPageDynamicHeaderTitle>
 </headerTitle>
  
         <headerContent>
-
             <m:FlexBox
                 id="idFlexBok2"
                 wrap="Wrap"
@@ -176,8 +200,6 @@
                                     <m:Column id="idISBNColUserLoans">
                                         <m:Title
                                             id="idISBNColTitleUserLoans"
-
-                                            
                                             text="ISBN"
                                         />
                                     </m:Column>

@@ -194,6 +194,11 @@ sap.ui.define(
               MessageToast.show("Book already exsist")
               return
           }
+          const oISBNExist = await this.checkISBN(oModel, oPayload.ISBN)
+                    if (oISBNExist) {
+                        MessageToast.show("Book with ISBN already exsist")
+                        return
+                    }
           await this.createData(oModel, oPayload, "/Book");
           this.getView().byId("idBookTable").getBinding("items").refresh();
           this.oCreateEmployeeDialog.close();
@@ -209,9 +214,17 @@ sap.ui.define(
         if (aSelectedItems.length > 0) {
           var aISBNs = [];
           aSelectedItems.forEach(function (oSelectedItem) {
-            var sISBN = oSelectedItem.getBindingContext().getObject().isbn;
-            aISBNs.push(sISBN);
+            const {ISBN,No_of_books,Avl_Quantity} = oSelectedItem.getBindingContext().getObject();
+            
+            if (No_of_books===Avl_Quantity){
+              aISBNs.push(ISBN);
             oSelectedItem.getBindingContext().delete("$auto");
+            }
+            else{
+              MessageToast.show("Book is Already in Active Loans");
+              return 
+            }
+            
           });
 
           Promise.all(
@@ -235,7 +248,7 @@ sap.ui.define(
         } else {
           MessageToast.show("Please Select Rows to Delete");
         }
-        location.reload();
+        
       },
 
       // onUpdateBtnPress: function () {
@@ -388,6 +401,23 @@ sap.ui.define(
             oModel.read("/Book", {
                 filters: [
                     new Filter("Title", FilterOperator.EQ, stitle),
+                  ],
+                  success: function (oData) {
+                      resolve(oData.results.length > 0);
+                  },
+                  error: function () {
+                      reject(
+                          "An error occurred while checking username existence."
+                      );
+                  }
+              })
+          })
+      },
+      checkISBN: async function (oModel, sISBN) {
+          return new Promise((resolve, reject) => {
+              oModel.read("/Book", {
+                  filters: [
+                      //new Filter("title", FilterOperator.EQ, stitle),
                     new Filter("ISBN", FilterOperator.EQ, sISBN)
 
                 ],
