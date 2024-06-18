@@ -106,15 +106,15 @@ sap.ui.define(
           //console.log(this.byId("idAllBooksTable").getSelectedItem().getBindingContext().getObject())
           var oSelectedItem = oEvent.getSource().getParent();
           //console.log(oSelectedItem)
-          
+         
           // console.log(oEvent.getSource().getBindingContext().getObject())
           //console.log(oEvent.getParameters())
           var oSelectedUser = oSelectedItem.getBindingContext();
          console.log(oEvent.getSource().getParent().getBindingContext().getObject())
           console.log(oSelectedUser)
           var user_id = this.ID;
-
-          
+ 
+         
           //console.log(user_id);
           if(this.byId("idAllBooksTable").getSelectedItems().length>1){
               MessageToast.show("Please Select only one Book");
@@ -128,20 +128,33 @@ sap.ui.define(
                 }
           var oQuantity=oSelectedBook.Avl_Quantity-1;
                 console.log(oQuantity)
+                const bIsInActiveLones = await this.bookInactiveLoans(oSelectedBook.ID, user_id);
+
+                if (bIsInActiveLones) {
+                    MessageToast.show("You had a ActiveLoan for selected book.");
+                    return;
+                }  
+                const bIsBookReserved = await this.checkIfBookIsReservedByUser(oSelectedBook.ID,user_id );
+
+                if (bIsBookReserved) {
+                    MessageToast.show("This book is already reserved .");
+                    return;
+                }
 
           const userModel = new sap.ui.model.json.JSONModel({
             user_ID_ID: user_id,
             book_ID: oSelectedBook.ID,
+           
             reservation_date: new Date(),
             book:{
               Avl_Quantity:oQuantity
             }
           });
           this.getView().setModel(userModel, "userModel");
-
+ 
           const oPayload = this.getView().getModel("userModel").getProperty("/"),
               oModel = this.getView().getModel("modelv2");
-
+ 
           try {
               await this.createData(oModel, oPayload, "/Reservation");
               sap.m.MessageBox.success("Book is Reserved");
@@ -162,6 +175,53 @@ sap.ui.define(
               sap.m.MessageBox.error("Some technical Issue");
           }
       },
+      checkIfBookIsReservedByUser: function (bookID, userID) {
+        return new Promise((resolve, reject) => {
+            const oModel = this.getView().getModel("modelv2");
+            const oFilters = [
+                new Filter("book_ID", FilterOperator.EQ, bookID),
+                new Filter("user_ID_ID", FilterOperator.EQ, userID)
+            ];
+
+            oModel.read("/Reservation", {
+                filters: oFilters,
+                success: function (oData) {
+                    resolve(oData.results.length > 0);
+                },
+                error: function (oError) {
+                    reject(oError);
+                }
+            });
+        });
+    },
+    bookInactiveLoans: function (bookID, userID) {
+      debugger
+      return new Promise((resolve, reject) => {
+          const oModel = this.getView().getModel("modelv2");
+          const oFilters = [
+              new Filter("book_ID", FilterOperator.EQ, bookID),
+              new Filter("user_ID_ID", FilterOperator.EQ, userID)
+          ];
+
+          oModel.read("/BookLoan", {
+              filters: oFilters,
+
+
+              success: function (oData) {
+                  console.log("ActiveLoans data:", oData);
+                  // Check if any of the loans are still active (no returndate)
+                  const bIsBorrowed = oData.results.some(loan => !loan.returndate);
+                  console.log("Active loans found:", bIsBorrowed);
+                  resolve(bIsBorrowed);
+              },
+              error: function (oError) {
+                  console.error("Error reading Bookloans:", oError);
+                  reject(oError);
+              }
+          });
+      });
+  },
+
      
       });
     }

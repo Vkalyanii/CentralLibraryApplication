@@ -51,6 +51,14 @@
                 type="Transparent"
                 press="onAllBooksPress"
             />
+             <m:Button
+                id="idnote124"
+                class="sapUiSmallMarginEnd"
+             
+            text="Reserved books"
+                type="Transparent"
+                press="onReservedBooksPress"
+            />
             <m:Button
                 id="idnote12"
                 class="sapUiSmallMarginEnd"
@@ -59,6 +67,7 @@
                 type="Transparent"
                 press="onNotificationPress"
             />
+
     
             <!-- <m:Button
                 id="idallbooks"

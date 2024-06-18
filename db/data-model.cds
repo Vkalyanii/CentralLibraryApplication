@@ -35,9 +35,9 @@ entity User :cuid {
         // userExist :Boolean;
         book        : Association to many Book on book.user=$self;
         bookLoan    : Association to many BookLoan on bookLoan.user_ID = $self;
-         reservation  : Association to many Reservation
+        reservation  : Association to many Reservation
                   on reservation.user_ID = $self;
-        // userExist :Boolean;
+        
   
 }   
 

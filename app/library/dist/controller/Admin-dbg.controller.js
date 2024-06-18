@@ -6,35 +6,30 @@ sap.ui.define(
     "sap/ui/model/json/JSONModel",
     "sap/m/MessageBox",
     "sap/m/Token",
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
   ],
   /**
    * @param {typeof sap.ui.core.mvc.Controller} Controller
    */
-  function (Controller, Filter, FilterOperator, JSONModel, MessageBox, Token,MessageToast) {
+  function (
+    Controller,
+    Filter,
+    FilterOperator,
+    JSONModel,
+    MessageBox,
+    Token,
+    MessageToast
+  ) {
     "use strict";
 
     return Controller.extend("com.app.library.controller.Admin", {
       onInit: function () {
-
         this.oQuantity = null;
-                this.oAq = null;
+        this.oAq = null;
 
         const oRouter = this.getOwnerComponent().getRouter();
-        oRouter.attachRoutePatternMatched(this.onUserDetailsLoad,this);
+        oRouter.attachRoutePatternMatched(this.onUserDetailsLoad, this);
 
-        //     var oTable=this.byId("idBookTable");
-        //     var oBinding =oTable.getBinding("items");
-        //     oBinding.attachChange(this._updateRowCount.bind(this));
-        //     this._updateRowCount();
-        // },
-        // _updateRowCount:function(){
-        //     var oTable = this.byId("idBookTable");
-        //     var oBinding=oTable.getBinding("items");
-        //     var iRowCount =oBinding.getLength();
-        //     var oInput =this.byId("idTotalBooks");
-        //     oInput.setValue(iRowCount);
-        //     console.log(oInput.getValue())
         const oLocalModel = new JSONModel({
           ISBN: "",
           Title: "",
@@ -42,10 +37,12 @@ sap.ui.define(
           Genre: "",
           No_of_books: 0,
           Description: "",
-          Avl_Quantity:0
+          Avl_Quantity: 0,
         });
         this.getView().setModel(oLocalModel, "localModel");
-        this.getOwnerComponent().getRouter().attachRoutePatternMatched(this.onBookListLoad, this);
+        this.getOwnerComponent()
+          .getRouter()
+          .attachRoutePatternMatched(this.onBookListLoad, this);
 
         const oView1 = this.getView();
         const oMulti1 = oView1.byId("idtitleFilterValue");
@@ -66,38 +63,26 @@ sap.ui.define(
       },
       setHeaderContext: function () {
         var oView = this.getView();
-        oView.byId("Bookstitle").setBindingContext(oView.byId("_IDGenTable1").getBinding("items").getHeaderContext());
+        oView
+          .byId("Bookstitle")
+          .setBindingContext(
+            oView.byId("_IDGenTable1").getBinding("items").getHeaderContext()
+          );
       },
 
-      //     var oTable = this.getView().byId("idBookTable"); // Replace "yourTableId" with the ID of your table
-      //     var oBinding = oTable.getBinding("items");
-      //     oBinding.attachEvent("updateFinished", this.onTableUpdateFinished, this);
-
-      //   },
-      //   setHeaderContext : function () {
-      //       var oView = this.getView();
-      //       oView.byId("Bookstitle").setBindingContext(
-      //           oView.byId("_IDGenTable1").getBinding("items").getHeaderContext());
-      //   },
-      // onTableUpdateFinished: function(oEvent) {
-      //     var oTable = oEvent.getSource().getParent(); // Get the table
-      //     var oBinding = oEvent.getSource(); // Get the binding
-      //     var iRowCount = oBinding.getLength(); // Get the number of rows
-
-      //     console.log("Number of rows: " + iRowCount);
-      // },
+     
       onBookListLoad: function () {
         this.getView().byId("idBookTable").getBinding("items").refresh();
       },
-    
-    onUserDetailsLoad:function(oEvent){
-        const{id}=oEvent.getParameter("arguments");
-        this.ID=id;
+
+      onUserDetailsLoad: function (oEvent) {
+        const { id } = oEvent.getParameter("arguments");
+        this.ID = id;
         //const sRouterName=oEvent.getParameter("name");
-        const oObjectPage=this.getView().byId("idBooks");
+        const oObjectPage = this.getView().byId("idBooks");
 
         oObjectPage.bindElement(`/User(${id})`);
-    },
+      },
 
       onGoPress: function () {
         /**
@@ -106,36 +91,45 @@ sap.ui.define(
          * Add the Functionality for Clear Filter
          */
         const oView = this.getView(),
-
           oTitleFilter = oView.byId("idtitleFilterValue"),
           sTitle = oTitleFilter.getTokens(),
-
           oAuthorFilter = oView.byId("idAuthorFilterValue"),
           sAuthor = oAuthorFilter.getTokens(),
-
           oISBNFilter = oView.byId("idISBNFilterValue"),
           sISBN = oISBNFilter.getTokens(),
-
           oGenreFilter = oView.byId("idGenreFilterValue"),
           sGenre = oGenreFilter.getTokens(),
-
           oTable = oView.byId("idBookTable"),
           aFilters = [];
 
         sTitle.filter((ele) => {
-          ele ? aFilters.push(new Filter("Title", FilterOperator.EQ, ele.getKey())) : "";
+          ele
+            ? aFilters.push(
+                new Filter("Title", FilterOperator.EQ, ele.getKey())
+              )
+            : "";
         });
 
         sAuthor.filter((ele) => {
-          ele ? aFilters.push(new Filter("Author", FilterOperator.EQ, ele.getKey())) : "";
+          ele
+            ? aFilters.push(
+                new Filter("Author", FilterOperator.EQ, ele.getKey())
+              )
+            : "";
         });
 
         sISBN.filter((ele) => {
-          ele ? aFilters.push(new Filter("ISBN", FilterOperator.EQ, ele.getKey())) : "";
+          ele
+            ? aFilters.push(new Filter("ISBN", FilterOperator.EQ, ele.getKey()))
+            : "";
         });
 
         sGenre.filter((ele) => {
-          ele ? aFilters.push(new Filter("Genre", FilterOperator.EQ, ele.getKey())) : "";
+          ele
+            ? aFilters.push(
+                new Filter("Genre", FilterOperator.EQ, ele.getKey())
+              )
+            : "";
         });
 
         oTable.getBinding("items").filter(aFilters);
@@ -150,8 +144,7 @@ sap.ui.define(
           cleargenre = view.byId("idGenreFilterValue"),
           sISBN = cleargenre.removeAllTokens(),
           clearISBN = view.byId("idISBNFilterValue"),
-          sGenre = clearISBN.removeAllTokens()
-
+          sGenre = clearISBN.removeAllTokens();
       },
 
       onCreateBtnPress: async function () {
@@ -178,27 +171,39 @@ sap.ui.define(
       onCreateBook: async function () {
         debugger;
         var oPayload = this.getView().getModel("localModel").getProperty("/"),
-
-        oModel = this.getView().getModel("modelv2");
-        oPayload.Avl_Quantity=oPayload.No_of_books;
+          oModel = this.getView().getModel("modelv2");
+        oPayload.Avl_Quantity = oPayload.No_of_books;
         this.getView().getModel("localModel").setData(oPayload);
-        if (!(oPayload.ISBN && oPayload.Author&& oPayload.Genre && oPayload.Description&& oPayload.No_of_books && oPayload.Title)) {
-            MessageToast.show("Enter all details");
-            return
+        if (
+          !(
+            oPayload.ISBN &&
+            oPayload.Author &&
+            oPayload.Genre &&
+            oPayload.Description &&
+            oPayload.No_of_books &&
+            oPayload.Title
+          )
+        ) {
+          MessageToast.show("Enter all details");
+          return;
         }
-          // oModel = this.getView().getModel("modelv2");
-        console.log(typeof (oPayload.No_of_books));
+        // oModel = this.getView().getModel("modelv2");
+        console.log(typeof oPayload.No_of_books);
         try {
-          const oTitleExist = await this.checkTitle(oModel, oPayload.Title, oPayload.ISBN)
+          const oTitleExist = await this.checkTitle(
+            oModel,
+            oPayload.Title,
+            oPayload.ISBN
+          );
           if (oTitleExist) {
-              MessageToast.show("Book already exsist")
-              return
+            MessageToast.show("Book already exsist");
+            return;
           }
-          const oISBNExist = await this.checkISBN(oModel, oPayload.ISBN)
-                    if (oISBNExist) {
-                        MessageToast.show("Book with ISBN already exsist")
-                        return
-                    }
+          const oISBNExist = await this.checkISBN(oModel, oPayload.ISBN);
+          if (oISBNExist) {
+            MessageToast.show("Book with ISBN already exsist");
+            return;
+          }
           await this.createData(oModel, oPayload, "/Book");
           this.getView().byId("idBookTable").getBinding("items").refresh();
           this.oCreateEmployeeDialog.close();
@@ -211,109 +216,90 @@ sap.ui.define(
 
       onDeleteBtnPress: async function () {
         var aSelectedItems = this.byId("idBookTable").getSelectedItems();
-        if (aSelectedItems.length > 0) {
-          var aISBNs = [];
-          aSelectedItems.forEach(function (oSelectedItem) {
-            const {ISBN,No_of_books,Avl_Quantity} = oSelectedItem.getBindingContext().getObject();
-            
-            if (No_of_books===Avl_Quantity){
-              aISBNs.push(ISBN);
-            oSelectedItem.getBindingContext().delete("$auto");
+        MessageBox.confirm("Are you sure? you want to delete this book", {
+          onClose:function(oAction){
+            if(oAction===MessageBox.Action.OK){
+              if (aSelectedItems.length > 0) {
+                var aISBNs = [];
+                aSelectedItems.forEach(function (oSelectedItem) {
+                  const { ISBN, No_of_books, Avl_Quantity } = oSelectedItem
+                    .getBindingContext()
+                    .getObject();
+      
+                  if (No_of_books === Avl_Quantity) {
+                    aISBNs.push(ISBN);
+                    oSelectedItem.getBindingContext().delete("$auto");
+                  } else {
+                    MessageToast.show("Book is Already in Active Loans");
+                    return;
+                  }
+                });
+      
+                Promise.all(
+                  aISBNs.map(function (sISBN) {
+                    return new Promise(function (resolve, reject) {
+                      resolve(sISBN + " Successfully Deleted");
+                    });
+                  })
+                )
+                  .then(function (aMessages) {
+                    aMessages.forEach(function (sMessage) {
+                      MessageToast.show(sMessage);
+                    });
+                  })
+                  .catch(function (oError) {
+                    MessageToast.show("Deletion Error: " + oError);
+                  });
+      
+                this.getView().byId("idBookTable").removeSelections(true);
+                this.getView().byId("idBookTable").getBinding("items").refresh();
+              } else {
+                MessageToast.show("Please Select Rows to Delete");
+              }
             }
-            else{
-              MessageToast.show("Book is Already in Active Loans");
-              return 
-            }
-            
-          });
-
-          Promise.all(
-            aISBNs.map(function (sISBN) {
-              return new Promise(function (resolve, reject) {
-                resolve(sISBN + " Successfully Deleted");
-              });
-            })
-          )
-            .then(function (aMessages) {
-              aMessages.forEach(function (sMessage) {
-                MessageToast.show(sMessage);
-              });
-            })
-            .catch(function (oError) {
-              MessageToast.show("Deletion Error: " + oError);
-            });
-
-          this.getView().byId("idBookTable").removeSelections(true);
-          this.getView().byId("idBookTable").getBinding("items").refresh();
-        } else {
-          MessageToast.show("Please Select Rows to Delete");
-        }
+          }
+        });
         
       },
-
-      // onUpdateBtnPress: function () {
-      //   var oBookTable = this.byId("idBookTable");
-      //   var oSelectedBook = oBookTable.getSelectedItem();
-
-      //   if (oSelectedBook) {
-      //     // Get the selected book's details
-      //     var oSelectedBookContext = oSelectedBook.getBindingContext();
-      //     var sISBN = oSelectedBookContext.getProperty("isbn");
-      //     var sTitle = oSelectedBookContext.getProperty("title");
-      //     var sAuthor = oSelectedBookContext.getProperty("author");
-      //     // Assuming you have other properties like title, author, etc.
-
-      //     // Open an edit dialog
-      //     this.openEditDialog(sISBN, sTitle, sAuthor); // Pass book details to the dialog
-      //   } else {
-      //     MessageToast.show("Please Select a Book to Edit");
-      //   }
-      // },
 
       onUpdateBtnPress: async function () {
         var oSelected = this.byId("idBookTable").getSelectedItems();
         if (oSelected.length === 0) {
           MessageToast.show("Please Select atleast one Book to Edit");
-          return
-      }
-      
-      if (oSelected.length > 1) {
+          return;
+        }
+
+        if (oSelected.length > 1) {
           MessageToast.show("Please Select only one Book to Edit");
-          return
-      }
+          return;
+        }
         if (oSelected) {
           var oID = oSelected[0].getBindingContext().getProperty("ID");
           var oISBN = oSelected[0].getBindingContext().getProperty("ISBN");
-          var oAuthorname = oSelected[0].getBindingContext().getProperty("Author");
+          var oAuthorname = oSelected[0]
+            .getBindingContext()
+            .getProperty("Author");
           var otitle = oSelected[0].getBindingContext().getProperty("Title");
           var oGenree = oSelected[0].getBindingContext().getProperty("Genre");
-          this.oQuantity = oSelected[0].getBindingContext().getProperty("No_of_books");
-          var oDescriptionn = oSelected[0].getBindingContext().getProperty("Description");
-      this.oAq= oSelected[0].getBindingContext().getProperty("Avl_Quantity");
-          // var oAq=oSelected.getBindingContext().getProperty("Avl_Quantity");
-          //           if(oAq===oQuantity){
-          //               oAq=oQuantity
-          //           }
-          //           else if(oAq<oQuantity){
-          //               let count=oQuantity-oAq
-          //               oAq=+count
-          //           }
-          //           else{
-          //               let count=oAq-oQuantity
-          //               oAq=-count
-          //           }
-
+          this.oQuantity = oSelected[0]
+            .getBindingContext()
+            .getProperty("No_of_books");
+          var oDescriptionn = oSelected[0]
+            .getBindingContext()
+            .getProperty("Description");
+          this.oAq = oSelected[0]
+            .getBindingContext()
+            .getProperty("Avl_Quantity");
 
           var newBookModel = new sap.ui.model.json.JSONModel({
-            ID:oID,
+            ID: oID,
             ISBN: oISBN,
             Author: oAuthorname,
             Title: otitle,
             Genre: oGenree,
             No_of_books: this.oQuantity,
             Description: oDescriptionn,
-            Avl_Quantity:this.oAq
-
+            Avl_Quantity: this.oAq,
           });
 
           this.getView().setModel(newBookModel, "newBookModel");
@@ -324,58 +310,56 @@ sap.ui.define(
 
           this.oEditBooksDialog.open();
           var oPayload = this.getView().getModel("newBookModel").getData();
-          console.log(oPayload)
+          console.log(oPayload);
         }
       },
 
       onSave: function () {
         var oQ = parseInt(this.getView().byId("idNo_of_booksVal").getValue());
-                var oAq = parseInt(this.getView().byId("idAvailabilityVal").getValue());
-                if (this.oQuantity < oQ) {
-                    oQ = oQ - this.oQuantity
-                    oAq = oAq + oQ
-                }
-                else if (this.oQuantity > oQ) {
-                    oQ = this.oQuantity - oQ
-                    oAq = oAq - oQ
-                }
-                else {
-                    oAq = oAq
-                }
-                console.log(oQ)
+        var oAq = parseInt(this.getView().byId("idAvailabilityVal").getValue());
+        if (this.oQuantity < oQ) {
+          oQ = oQ - this.oQuantity;
+          oAq = oAq + oQ;
+        } else if (this.oQuantity > oQ) {
+          oQ = this.oQuantity - oQ;
+          oAq = oAq - oQ;
+        } else {
+          oAq = oAq;
+        }
+        console.log(oQ);
         var oPayload = this.getView().getModel("newBookModel").getData();
-        oPayload.Avl_Quantity = oAq
+        oPayload.Avl_Quantity = oAq;
         this.getView().getModel("newBookModel").setData(oPayload);
-        var oDataModel = this.getOwnerComponent().getModel("modelv2");// Assuming this is your OData V2 model
+        var oDataModel = this.getOwnerComponent().getModel("modelv2"); // Assuming this is your OData V2 model
         console.log(oDataModel.getMetadata().getName());
 
         try {
           // Assuming your update method is provided by your OData V2 model
-          oDataModel.update("/Book(" + oPayload.ID  + ")", oPayload, {
+          oDataModel.update("/Book(" + oPayload.ID + ")", oPayload, {
             success: function () {
               this.getView().byId("idBookTable").getBinding("items").refresh();
               this.oEditBooksDialog.close();
             }.bind(this),
             error: function (oError) {
               this.oEditBooksDialog.close();
-              sap.m.MessageBox.error("Failed to update book: " + oError.message);
-              
-            }.bind(this)
+              sap.m.MessageBox.error(
+                "Failed to update book: " + oError.message
+              );
+            }.bind(this),
           });
         } catch (error) {
           this.oEditBooksDialog.close();
           sap.m.MessageBox.error("Some technical Issue");
         }
 
-
         var oDataModel = new sap.ui.model.odata.v2.ODataModel({
-          serviceUrl: "https://port4004-workspaces-ws-dv77z.us10.trial.applicationstudio.cloud.sap/v2/BookSRV",
+          serviceUrl:
+            "https://port4004-workspaces-ws-dv77z.us10.trial.applicationstudio.cloud.sap/v2/BookSRV",
           defaultBindingMode: sap.ui.model.BindingMode.TwoWay,
           // Configure message parser
-          messageParser: sap.ui.model.odata.ODataMessageParser
-        })
+          messageParser: sap.ui.model.odata.ODataMessageParser,
+        });
       },
-
 
       onClose: function () {
         if (this.oEditBooksDialog.isOpen()) {
@@ -383,57 +367,62 @@ sap.ui.define(
         }
       },
 
-
       onActiveLoans: function () {
         var oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteActiveLoans")
+        oRouter.navTo("RouteActiveLoans");
       },
       onIssueBooks: function () {
         var oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteIssueBooks")
+        oRouter.navTo("RouteIssueBooks");
       },
       onClickUsers: function () {
         var oRouter = this.getOwnerComponent().getRouter();
-        oRouter.navTo("RouteAllUsers")
+        oRouter.navTo("RouteAllUsers");
       },
       checkTitle: async function (oModel, stitle, sISBN) {
         return new Promise((resolve, reject) => {
-            oModel.read("/Book", {
-                filters: [
-                    new Filter("Title", FilterOperator.EQ, stitle),
-                  ],
-                  success: function (oData) {
-                      resolve(oData.results.length > 0);
-                  },
-                  error: function () {
-                      reject(
-                          "An error occurred while checking username existence."
-                      );
-                  }
-              })
-          })
+          oModel.read("/Book", {
+            filters: [new Filter("Title", FilterOperator.EQ, stitle)],
+            success: function (oData) {
+              resolve(oData.results.length > 0);
+            },
+            error: function () {
+              reject("An error occurred while checking username existence.");
+            },
+          });
+        });
       },
       checkISBN: async function (oModel, sISBN) {
-          return new Promise((resolve, reject) => {
-              oModel.read("/Book", {
-                  filters: [
-                      //new Filter("title", FilterOperator.EQ, stitle),
-                    new Filter("ISBN", FilterOperator.EQ, sISBN)
-
-                ],
-                success: function (oData) {
-                    resolve(oData.results.length > 0);
-                },
-                error: function () {
-                    reject(
-                        "An error occurred while checking username existence."
-                    );
-                }
-            })
-        })
-    },
-
-
+        return new Promise((resolve, reject) => {
+          oModel.read("/Book", {
+            filters: [
+              //new Filter("title", FilterOperator.EQ, stitle),
+              new Filter("ISBN", FilterOperator.EQ, sISBN),
+            ],
+            success: function (oData) {
+              resolve(oData.results.length > 0);
+            },
+            error: function () {
+              reject("An error occurred while checking username existence.");
+            },
+          });
+        });
+      },
+      OnSignoutClick: function () {
+        var oRouter = this.getOwnerComponent().getRouter();
+        oRouter.navTo("RouteHome", {}, true);
+      },
+      onAdminNotificationPress: async function () {
+        if (!this.oLoginDialog) {
+          this.oLoginDialog = await this.loadFragment("NewUserSignUp");
+        }
+        this.oLoginDialog.open();
+      },
+      onCloseDialog1: function () {
+        if (this.oLoginDialog.isOpen()) {
+          this.oLoginDialog.close();
+        }
+      },
     });
-  });
-
+  }
+);

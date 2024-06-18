@@ -23,11 +23,7 @@ sap.ui.define(
             .getBindingContext()
             .getObject()
         );
-        // var oSelectedItem = oEvent.getSource().getParent();
-        // console.log(oSelectedItem)
-        // console.log(oEvent.getSource().getBindingContext().getObject())
-        // console.log(oEvent.getParameters())
-        // var oSelectedUser = oSelectedItem.getBindingContext().getObject();
+        
         if (this.byId("idIssueBooks").getSelectedItems().length > 1) {
           MessageToast.show("Please Select only one Book");
           return;

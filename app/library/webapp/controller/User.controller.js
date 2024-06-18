@@ -53,6 +53,29 @@ sap.ui.define([
                 var oRouter = this.getOwnerComponent().getRouter();
                                 oRouter.navTo("RouteHome", { },true)
             },
+            onReservedBooksPress: async function () {
+                var oModel = this.getView().getModel("modelv2");
+                oModel.refresh();
+                if (!this.oReservedBooks) {
+
+                    this.oReservedBooks = await this.loadFragment("ReservedbooksByuser")
+
+                    const oObjectPage = this.getView().byId("idloginDialog");
+
+                    oObjectPage.bindElement(`/User(${this.ID})`);
+                }
+                this.oReservedBooks.open();
+
+            },
+            onCloseReserved: function () {
+                if (this.oReservedBooks.isOpen()) {
+                    this.oReservedBooks.close()
+                }
+            },
+            onCancelReservedBook:function(){
+                var oSelectedItem = this.byId("idReservedBooks").getSelectedItem();
+                oSelectedItem.getBindingContext().delete("$auto");
+            }
            
            
         });

@@ -6,6 +6,15 @@ background-image: url("https://galeriemagazine.com/wp-content/uploads/2018/05/NY
     background-position: center;
     height: 100vh;
 }
+.header{
+    background-image: url("https://w7.pngwing.com/pngs/646/840/png-transparent-sap-logo-illustration-sap-se-computer-icons-sap-erp-wtf-miscellaneous-blue-angle.png");
+background-size: initial;
+    background-repeat: no-repeat;
+    background-position:initial;
+    height: 30px;;
+}
+
+
 .adminview{
   background-color: lavender;
 }

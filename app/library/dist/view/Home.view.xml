@@ -13,6 +13,7 @@
             rel="stylesheet"
             type="text/css"
             href="css/style.css"
+            class="header"
         />
     </html:head>
 
@@ -20,14 +21,26 @@
         id="page"
         class ="page"
         title="{i18n>title}"
+        titleAlignment="Center"
     >
         <headerContent>
+              
+          <Button
+			id="showQuickView"
+			text="Company Info"
+			press="onhandleCompanyQuickViewPress"
+			ariaHasPopup="Dialog" />
+             <Button
+                id="books"
+                text="Available Books"
+                type="Default"
+                press="AvailableBooksBtn" 
+            /> 
             <Button
                 icon="sap-icon://visits"
-                id="idbtn"
+                id="idbt0n1111"
                 text="Login"
                 type="Transparent"
-                width="50%"
                 press="onloginBtnClick"
             />
              <Button
@@ -35,11 +48,16 @@
                 id="idbtn1"
                 text="SignUp"
                 type="Transparent"
-                width="50%"
+                
                 press="onClickSignUp"
             />
+            <!-- <Button
+			id="showQuickView"
+			text="Destails"
+			width="30%"
+			press="onhandleCompanyQuickViewPress"
+			class="sapUiSmallMarginBottom"
+			ariaHasPopup="Dialog" /> -->
         </headerContent>
-      
-
     </Page>
 </mvc:View>

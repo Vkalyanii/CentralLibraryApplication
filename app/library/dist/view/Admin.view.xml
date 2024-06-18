@@ -25,6 +25,23 @@
                 	<f:expandedContent>
 						<Label id ="labellll" text="Hello!!! {username} from Central Library"/>
 					</f:expandedContent>
+                    <f:actions>
+                      <Button
+                id="idallbooks"
+                icon="sap-icon://customer"
+                class="sapUiSmallMarginEnd"
+            tooltip="SIGN OUT"
+                type="Transparent"
+                press="OnSignoutClick"
+                />
+                 <Button
+                        id="idBtnFullScreen"
+                        tooltip="LogOut"
+                        icon="sap-icon://bell"
+                        type="Transparent"
+                        press="onAdminNotificationPress"
+                    />
+                    </f:actions>
                  
             </f:DynamicPageTitle>
         </f:title>
